@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<!-- Include jQuery -->
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script src="https://kit.fontawesome.com/yourcode.js"></script>
+
+<!-- Bootstrap 3.3.7 -->
+<script
+	src="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet"
+	href="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+.navbar a {
+	float: left;
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+.form-gap {
+	padding-top: 70px;
+}
+
+.navbar a:hover {
+	background: #FAD7A0;
+	color: black;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: orange;
+	width: 100%;
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 14px 18px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #FAD7A0;
+	color: black;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.full-footer {
+	background-color: orange;
+}
+
+.bottom-footer {
+	background-color: gray;
+}
+
+.breadcrumbs-section {
+	background-color: white;
+}
+
+.breadcrumb {
+	background-color: white;
+}
+
+.carousel-inner {
+	max-height: 300px;
+	width: 100%;
+}
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+p.date {
+	text-align: center;
+	font-size: 32px;
+}
+
+.rq {
+	color: #FF0000;
+	font-size: 10pt;
+}
+
+.image {
+	float: center;
+	height: 250;
+	width: 250;
+	object-fit: cover;
+}
+
+.cropdetail {
+	color: #191970;
+}
+</style>
+</head>
+
+
+<body>
+	<div ng-app="farmer-buddy-app" ng-controller="farmer-buddy-ctrl">
+
+		<!-- ---------------------------------TITLE AND LOGO ----------------------------------------- -->
+		<div class="col-sm-offset-3 col-md-6"
+			style="font-variant: small-caps;">
+
+			<!-- Farmer buddy logo -->
+			<img src="./IMG/farmer-buddy.jpg" width="150" height="120" />
+
+			<!-- Title farmer buddy -->
+			<font color="green" size="70"><b> Farmer-Buddy </b></font>
+		</div>
+
+		<!-- ----------------------------------------------Header--------------------------------------------------------->
+		<header>
+			<div class="p-1" id="topHeader">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 text-right">
+							<a class="p-1" href="tel:+917798839371"><i
+								class="fa fa-phone">7798839371</i></a> <a class="p-1"
+								href="mailto:farmers.buddyhelp@gmail.com"><i
+								class="fa fa-envelope">farmers.buddyhelp@gmail.com</i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="bottomHeader">
+				<div class="container-fluid">
+					<nav class="navbar navbar-dark navbar-expand-md"
+						style="background-color: Orange;">
+						<button type="submit"
+							style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
+							class="btn btn-warning" ng-click="welcome_page()">Home</button>
+						<div class="dropdown">
+							<button type="submit"
+								style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
+								class="btn btn-warning" data-toggle="dropdown">
+								Services <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<button type="submit"
+									style="color: black; padding: 17px 16px; border-color: white; background-color: white;"
+									class="btn btn-success" ng-click="crop_page()">Crop</button>
+								<button type="submit"
+									style="color: black; padding: 17px 16px; border-color: white; background-color: white;"
+									class="btn btn-success" style="background-color: #FAD7A0;"
+									ng-click="fertilizer_page()">Fertilizers</button>
+								<button type="submit"
+									style="color: black; border-color: white; background-color: white; padding: 17px 16px;"
+									class="btn btn-success" ng-click="pesticide_page()">Pesticides</button>
+								<button type="submit"
+									style="color: black; border-color: white; background-color: white; padding: 17px 16px;"
+									class="btn btn-success" ng-click="seed_page()">Seed</button>
+							</ul>
+						</div>
+						<button type="submit"
+							style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
+							class="btn btn-success" style="background-color: #FAD7A0;"
+							ng-click="about_page()">About</button>
+						<button type="submit"
+							style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
+							class="btn btn-success" ng-click="contact_page()">Contact</button>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<!-- ------------------------------------------------------------------------------------------------- -->
+		<!-- -----------------------------login success/ fail -------------------------------------------------------- -->
+
+		<div ng-repeat="detail in userdetail">
+			<!-- Its like Java for loop -->
+			<div ng-if="detail.status=='ok'">
+				<div ng-init="welcome_page()">
+					<div id="welcome_div" ng-if="welcome_status=='true'">
+						<br>
+						<div id="myModal" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">Modal Header</h4>
+									</div>
+									<div class="modal-body">
+										<p>Login Successful !!</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Close</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<section>
+							<div class="container">
+								<div class="row">
+									<div class="col-12">
+										<h2>Agriculture</h2>
+										<br> <font size="4.5" color="black"> Agriculture
+											is the science and art of cultivating plants and livestock.
+											Agriculture was the key development in the rise of sedentary
+											human civilization, whereby farming of domesticated species
+											created food surpluses that enabled people to live in cities.
+											The history of agriculture began thousands of years ago.<br>
+											Agriculture is the process of producing food, feed, fiber and
+											many other desired products by the cultivation of certain
+											plants and the raising of domesticated animals (livestock).
+											The practice of agriculture is also known as "farming", while
+											scientists, inventors and others devoted to improving farming
+											methods and implements are also said to be engaged in
+											agriculture.<br> Maharashtra is a leading State in
+											agriculture. Principal crops grown in the State are rice,
+											jowar, bajra, wheat, tur, mung, urad, gram and other pulses.
+											The State is a major producer of oilseeds. Groundnut,
+											sunflower, soyabean are the major oil seed crops. The
+											important cash crops are cotton, sugarcane, turmeric and
+											vegetables. State is pioneer in onion production in the
+											country. It is today emerging as an important horticultural
+											State in the country. Different types of soil, diverse agro
+											climatic conditions, adequate technical manpower, well
+											developed communication facilities, increasing trend in drip
+											irrigation, green house, use of cool chain facilities and
+											vibrant farmer organisation offer wide opportunities to grow
+											different horticultural crops in the State.
+										</font>
+
+										<h2>Food Processing</h2>
+										<br> <font size="4.5" color="black">Food
+											processing industries in Maharashtra consists of very basic
+											processing. The main processing industries in the State are
+											in the sectors of sugar, milk, poultry, rice mill, flour
+											mill, meat, edible oil, vanaspati, fruit and vegetable units,
+											milk processing units etc. There exist immense opportunities
+											for modernising food processing units in the State. Rice,
+											wheat, soyabean, jawar, grapes, pomegranates and mangoes are
+											the main crops that are available in the State for primary
+											and secondary process. </font>
+
+										<h2>Floriculture</h2>
+										<br> <font size="4.5" color="black">Maharashtra is
+											a major producer of floriculture products with more than 4000
+											hectares of area under various flowers. The major traditional
+											flowers grown in Maharashtra are rose, chrysanthemum,
+											marigold, jasmine and tuberose. Whereas, gladioluses, aster,
+											zinnia, Stacie, lilies, gerberas and carnations are grown
+											among the non-traditional flowers.The climate of Pune and
+											Nashik region, facilitate the setting up of such units
+											without heavy investment on environment control. Maharashtra
+											is offering state of the art infrastructure for floriculture
+											industry to grow.</font>
+										<hr>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="section background-white">
+							<div class="container">
+								<div class="row">
+									<div class="col-md-4 margin-m-bottom">
+										<img class="margin-bottom" src="IMG/ricecrop.jpg"
+											alt="Rice Crop" height=300 width=330>
+										<p style="text-align: center; font-size: 50;">Food Crop</p>
+									</div>
+									<div class="col-md-4 margin-m-bottom">
+										<img class="margin-bottom" src="IMG/vegecrop.jpg"
+											alt="Vege crop" height=300 width=330>
+										<p style="text-align: center; font-size: 50;">Vegetable
+											Crop</p>
+									</div>
+									<div class="col-md-4 margin-m-bottom">
+										<img class="margin-bottom" src="IMG/floriculture.jpg"
+											alt="Floriculture" height=300 width=330>
+										<p style="text-align: center; font-size: 50;">Floriculture
+											Crop</p>
+									</div>
+								</div>
+							</div>
+						</section>
+
+					</div>
+				</div>
+			</div>
+			<div ng-if="detail.status=='notok'">
+				Invalid Username or password! Try again !
+				<div id="myModal" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Modal Header</h4>
+							</div>
+							<div class="modal-body">
+								<p>
+									Invalid Username or password! <br>Please Try again !
+								</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Close</button>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- ----------------------------------REGISTRATION FORM--------------------------------------------------- -->
+		<div id="Registration_div" ng-if="registration_status=='true'"
+			class="jumbotron col-md-offset-3 col-md-6"
+			style="background-color: white; font-stretch: ultra-expanded">
+			<div class="text-center">
+				<!-- Registration check ----------------------------------------------------------------------->
+
+				<div ng-repeat="rdetail in regdetail">
+					<div ng-if="rdetail.status=='notok'">{{rdetail.msg}}</div>
+				</div>
+
+
+				<h2>
+					<font color="black"> Registration Form </font>
+				</h2>
+			</div>
+			<label><font color="red" size=3px>Fields with * are
+					required.</font></label>
+			<form name="form1" action="#" onsubmit="required()">
+				<div class="form-group">
+					<label>Enter first name:</label><font color="red" size=5px>*</font>
+					<input type="text" class="form-control" placeholder="First name"
+						ng-model="firstname" name="firstname" required>
+
+				</div>
+				<div class="form-group">
+					<label>Enter last name:<font color="red" size=5px>*</font></label>
+					<input type="text" class="form-control" placeholder="last name"
+						ng-model="lastname" name="lastname" required>
+				</div>
+				<div class="form-group">
+					<label>Enter Username:<font color="red" size=5px>*</font></label> <input
+						type="text" class="form-control" placeholder="Username"
+						ng-model="username" name="username" required>
+				</div>
+				<div class="form-group">
+					<label>Enter Password:<font color="red" size=5px>*</font></label> <input
+						type="password" class="form-control" id="pwd" ng-model="pwd"
+						placeholder="Password" name="password"
+						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+						title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+						required>
+				</div>
+				<div class="form-group">
+					<label>Confirm Password:<font color="red" size=5px>*</font></label>
+					<input type="password" class="form-control" id="cpwd"
+						ng-model="cpwd" placeholder="Confirm Password"
+						name="confirm password" required>
+
+					<div ng-if="checkpass=='false'">
+						<label><font color="red">Your passwords did not
+								match!</font></label>
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Enter email:<font color="red" size=5px>*</font></label> <input
+						type="text" class="form-control" placeholder="email"
+						ng-model="email" name="email"
+						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+				</div>
+				<div class="form-group">
+					<label>Enter Phone No:<font color="red" size=5px>*</font></label> <input
+						type="tel" class="form-control" placeholder="Phone no."
+						ng-model="mobile" name="mobile" maxlength=10 pattern="[0-9]{10}"
+						title="Must be 10 digits" required>
+				</div>
+
+				<button type="submit" class="btn btn-primary"
+					ng-click="registerUser(firstname, lastname, username, pwd, cpwd, email, mobile)">Register</button>
+				<button type="submit" class="btn btn-success"
+					ng-click="backToHome()">Back to Home</button>
+			</form>
+		</div>
+		<script>
+			function required() {
+				var empt1 = document.form1.firstname.value;
+				var empt2 = document.form1.lastname.value;
+				var empt3 = document.form1.username.value;
+				var empt4 = document.form1.password.value;
+				var empt5 = document.form1.email.value;
+				var empt6 = document.form1.mobile.value;
+				if (empt1 === "" && empt2 === "" && empt3 === ""
+						&& empt4 === "" && empt5 === "" && empt6 === "") {
+					alert("Please input a Value");
+					return false;
+				} else {
+					alert('Registration done successfully. Please login');
+					return true;
+				}
+			}
+		</script>
+		<!------------------------------  Carousel Implementation------------------------------------->
+		<div id="myCarousel" class="jumbotron col-md-12 carousel slide"
+			ng-if="carousel_status=='false'" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+				<li data-target="#myCarousel" data-slide-to="3"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner">
+				<div class="item active" style="width: 100;">
+					<img src="./IMG/farm.jpg" alt="farmer">
+				</div>
+
+				<div class="item" style="width: 100;">
+					<img src="./IMG/farm2.jpg" alt="map">
+				</div>
+
+				<div class="item" style="width: 100;">
+					<img src="./IMG/farm4.jpg" alt="portal">
+				</div>
+
+				<div class="item" style="width: 100;">
+					<img src="./IMG/farm3.jpg" alt="portal" class="center">
+					<p class="date">“Agriculture is our wisest pursuit, because it
+						will in the end contribute most to real wealth, good morals, and
+						happiness.”</p>
+				</div>
+			</div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				<i class="fa fa-chevron-left"></i>
+			</a> <a class="right carousel-control" href="#myCarousel"
+				data-slide="next"> <i class="fa fa-chevron-right"></i>
+			</a>
+		</div>
+
+		<!-- ------------------------------------LOGIN FORM------------------------------------------------ -->
+		<div class="jumbotron col-sm-offset-3 col-md-6"
+			ng-if="login_status=='false'"
+			style="background-color: white; font-stretch: ultra-expanded; padding: 1px, 48px">
+			<div ng-repeat="rdetail in regdetail">
+				<div ng-if="rdetail.status=='ok'" ng-init="backToHome()">
+					<div>{{rdetail.msg}}</div>
+
+				</div>
+			</div>
+
+			<!--Div for login -->
+			<div id="Login_div">
+
+				<h3>
+					<font color="black"> <b>USER LOGIN </b></font>
+				</h3>
+
+				<!--Div for username  -->
+				<div class="form-group">
+					<label>Username</label> <input type="text" class="form-control"
+						id="uname" ng-model="uname" aria-describedby="unameHelp"
+						placeholder="Enter User Name"> <small id="unameHelp"
+						class="text-light bg-dark"> We'll never share your user
+						name with anyone else. </small>
+
+				</div>
+
+				<!--Div for Password -->
+				<div class="form-group">
+					<label>Password</label> <input type="password" class="form-control"
+						id="pwd" ng-model="pwd" placeholder="Password">
+				</div>
+
+				<!-- login button -->
+				<button type="submit" class="btn btn-success"
+					ng-click="loginUser(uname,pwd)">Login</button>
+
+				<!-- forget password -->
+				<button type="link" class="btn btn-success"
+					ng-click="forget_password()"
+					style="color: blue; background-color: white; border-color: white;">
+					<u>Forgot Password?</u>
+				</button>
+
+
+				<!-- a href="#" onclick=""><font align="right"> <u>Forgot Password?</u></font></a> -->
+				<div class="text-left">
+					<label>Are you a new user?</label><br>
+
+					<button type="submit" class="btn btn-success"
+						ng-click="registration_page()">Sign up</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- ------------------------------------------------Contact Page---------------------------------------- -->
+
+
+
+		<div id="Contact_div" ng-if="contact_status=='true'">
+			<section class="breadcrumbs-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<h2>Contact Us</h2>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+								<li>
+								<li class="breadcrumb-item active">Contact Us</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<font size="4.5" color="black">We are always here to help.
+								If you have requirements/queries about our services; fill up the
+								contact from below and we'll do our best to reply within 24
+								hours. Alternatively simply pickup the phone and give us a call.</font>
+							<hr>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="form-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<form action="">
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<input type="text" class="form-control"
+											placeholder="Full Name" ng-model="fullname">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="email" class="form-control"
+											placeholder="Email Address" ng-model="email">
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<input type="number" class="form-control"
+											placeholder="Mobile Number" ng-model="mobile">
+									</div>
+									<div class="form-group col-md-6">
+										<select class="form-control" name="" id="" ng-model="district">
+											<option selected>District</option>
+											<option value="Ahmednagar">Ahmednagar</option>
+											<option value="Akola">Akola</option>
+											<option value="Amravati">Amravati</option>
+											<option value="Aurangabad">Aurangabad</option>
+											<option value="Bhandara">Bhandara</option>
+											<option value="Beed">Beed</option>
+											<option value="Buldhana">Buldhana</option>
+											<option value="Chandrapur">Chandrapur</option>
+											<option value="Dhule">Dhule</option>
+											<option value="Gadchiroli">Gadchiroli</option>
+											<option value="Gondia">Gondia</option>
+											<option value="Hingoli">Hingolir</option>
+											<option value="Jalgaon">Jalgaon</option>
+											<option value="Jalana">Jalana</option>
+											<option value="Kolhapur">Kolhapur</option>
+											<option value="Latur">Latur</option>
+											<option value="Mumbai">Mumbai</option>
+											<option value="Nanded">Nanded</option>
+											<option value="Nandurbar">Nandurbar</option>
+											<option value="Nasik">Nashik</option>
+											<option value="Osmanabad">Osmanabad</option>
+											<option value="Parbhani">Parbhani</option>
+											<option value="Pune">Pune</option>
+											<option value="Raigarh">Raigarh</option>
+											<option value="Ratnagiri">Ratnagiri</option>
+											<option value="Sangali">Sangali</option>
+											<option value="Satara">Satarar</option>
+											<option value="Sindhudurg">Sindhudurg</option>
+											<option value="Solapur">Solapur</option>
+											<option value="Thane">Thane</option>
+											<option value="Wardha">Wardha</option>
+											<option value="Washim">Washim</option>
+											<option value="Yawatmal">Yawatmal</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<input type="text" class="form-control" placeholder="Subject"
+											ng-model="subject">
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<textarea class="form-control"
+											placeholder="Write your query here.." rows="3" cols=""
+											ng-model="description"></textarea>
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div class="form-group col-md-12 text-center">
+										<button type="submit" class="btn btn-success"
+											ng-click="contactUs(fullname, email, mobile, district, subject, description)">
+											<i class="fa fa-paper-plane"></i>Send
+										</button>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-12 text-center">
+										<button type="submit" class="btn btn-success"
+											ng-click="backToHome()">
+											<i class="fa fa-chevron-left"></i>Back To Home
+										</button>
+									</div>
+								</div>
+
+							</form>
+						</div>
+
+						<div class="col-md-6 address">
+							<h5>
+								<b>Call Us/ WhatsApp</b>
+							</h5>
+							<p>
+								<a href="tel:+91 7798839371"><i class="fa fa-phone"></i>
+									+(91) 7798839371 </a><br>
+							</p>
+
+							<h5>
+								<b>Email</b>
+							</h5>
+							<p>
+								<a href="email:farmers.buddyhelp@gmail.com"><i
+									class="fa fa-envelope"></i> farmers.buddyhelp@gmail.com </a><br>
+							</p>
+
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<!-- ------------------------------------------------Contact Page close ---------------------------------------- -->
+
+		<!-- ------------------------------------------------About Page ------------------------------------------------ -->
+
+
+
+		<div id="About_div" ng-if="about_status=='true'">
+			<section class="breadcrumbs-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<h2>About Us</h2>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+								<li>
+								<li class="breadcrumb-item active">About Us</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section background-white">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 margin-m-bottom">
+							<img class="margin-bottom" src="IMG/crop.jpg" alt="" height=300
+								width=500>
+							<h2 class="text-thin">Our Vision</h2>
+							<font size="4.5" color="black">To transform farmers by
+								creating an innovative as well as interactive platform for the
+								best farming results.</font>
+						</div>
+						<div class="col-md-6 margin-m-bottom">
+							<img class="margin-bottom" src="IMG/crop2.jpg" alt="" height=300
+								width=500>
+							<h2 class="text-thin">Our Mission</h2>
+							<font size="4.5" color="black">To provide an online
+								platform for getting necessary help for farming</font>
+						</div>
+					</div>
+				</div>
+			</section>
+			<br>.
+			<section class="section background-white">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 margin-m-bottom">
+							<h2 class="text-thin">Our Values</h2>
+
+							<font size="4.5" color="black">Respect and value for local
+								knowledge and innovations<br> To provide agriculture
+								information to everyone which is easy to understand<br> <font>To
+									encourage the youths on rural development</font>
+							</font>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="section background-white">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 margin-m-bottom">
+							<br>
+							<h2>--------------------------------------------------What
+								we are----------------------------------------------</h2>
+							<br> <font size="4.5" color="black">This platform is
+								specially developed to empower farmers the across maharashtra.
+								Here we help farmers all the way from seeding to shipping their
+								products in market. It includes seeds, fertilizers, pesticides.
+								We also provide guidance of checking soil capacity and quality.
+								This is the collaborative platform which contains each necessary
+								information needed for farming.</font><br>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<!-- ------------------------------------------------About Page close ---------------------------------------- -->
+		<!-- ------------------------------Forget password ---------------------------------------->
+		<div id="forget_pass_div" ng-if="forget_pass_status=='true'"
+			class="jumbotron col-sm-12" style="background-color: white;">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="text-center">
+								<h3>
+									<i class="fa fa-lock fa-4x"></i>
+								</h3>
+								<h2 class="text-center">Forgot Password?</h2>
+								<p>You can reset your password here.</p>
+								<div class="panel-body">
+
+									<form id="register-form" role="form" autocomplete="off"
+										class="form" method="post">
+
+										<div class="form-group">
+											<div class="input-group">
+												<span class="input-group-addon"><i
+													class="glyphicon glyphicon-envelope color-blue"></i></span> <input
+													id="email" name="email" placeholder="email address"
+													class="form-control" type="email">
+											</div>
+										</div>
+										<div class="form-group">
+											<input name="recover-submit"
+												class="btn btn-lg btn-primary btn-block"
+												value="Reset Password" type="submit">
+										</div>
+
+										<input type="hidden" class="hide" name="token" id="token"
+											value="">
+									</form>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ----------------------------------------------------Crop Page-------------------------------------------- -->
+
+		<div id="Crop_div" ng-if="crop_status=='true'">
+			<section class="breadcrumbs-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<h2>Crop</h2>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+								<li>
+								<li class="breadcrumb-item active">Crop</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<div class="form-group col-md-4 col-md-offset-2"
+					ng-init="populateDistricts()">
+					<label>Select district:</label> <select class="form-control"
+						name="" id="" ng-model="croptypeids"
+						ng-change="populateCropTypes(croptypeids)">
+						<option value="">Districts</option>
+						<option ng-repeat="district in districts"
+							value="{{district.croptypeids}}">
+							{{district.districtname}}</option>
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label>Select type of crop:</label> <select class="form-control"
+						name="" id="" ng-model="croptypeid" ng-change="cropgo(croptypeid)">
+						<option value="">CropType</option>
+						<option ng-repeat="croptype in croptypes"
+							value="{{croptype.croptypeid}}">
+							{{croptype.croptypename}}</option>
+					</select><br>
+				</div>
+
+				<table class="table" ng-if="crop_detail_status=='true'">
+					<thread class="thread_dark">
+					<tr>
+						<th>Crop Name</th>
+						<th>Crop Description</th>
+						<th>Crop Image</th>
+
+					</tr>
+					</thread>
+					<tbody ng-repeat="crop in crops">
+						<tr>
+							<td>{{crop.cropname}}</td>
+							<td><button type="link" class="btn"
+									ng-click="cropdesc_page(crop.cropid)"
+									style="background-color: orange; border-color: black; font-size: 20px;">Click
+									Here</button></td>
+							<td><img class="image"
+								src="{{context_path}}{{crop.cropimg}}" height=250 width=350></td>
+
+						</tr>
+					</tbody>
+				</table>
+				<div class="col-md-4" ng-repeat="crop in crops">
+					<div ng-if="crop.status=='notok'">No crop records found!!</div>
+				</div>
+
+
+			</section>
+
+		</div>
+
+		<div id="cropdesc_div" ng-if="cropdesc_status=='true'">
+			<section class="breadcrumbs-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<h2>Crop Description</h2>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+								<li>
+								<li class="breadcrumb-item active">CropDesc</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section  class="col-md-10 col-md-offset-1" ng-repeat="cropdesc in cropid_desc">
+				<h2 style="color: #32CD32;">
+					<b>{{crop_desc.cropname}}</b>
+				</h2>
+				<h3 class="cropdetail">
+					<b>Climate</b>
+				</h3>
+				<font size="4.5" color="black">{{cropdesc.climate}}</font>
+				<h3 class="cropdetail">
+					<b>Time Period</b>
+				</h3>
+				<font size="4.5" color="black">{{cropdesc.timeperiod}}</font>
+				<h3 class="cropdetail">
+					<b>Soil Requirement</b>
+				</h3>
+				<font size="4.5" color="black">{{cropdesc.soilrequirement}}</font>
+				<h3 class="cropdetail">
+					<b>Land Preparation</b>
+				</h3>
+				<font size="4.5" color="black">{{cropdesc.landpreparation}}</font>
+				<h3 class="cropdetail">
+					<b>Sowing</b>
+				</h3>
+				<font size="4.5" color="black">{{cropdesc.sowing}}</font>
+				<h3 class="cropdetail">
+					<b>Irrigation</b>
+				</h3>
+				<font size="4.5" color="black">{{cropdesc.irrigation}}</font> <br>
+			</section>
+		
+		<div class="col-md-10 col-md-offset-1">
+			<button type="submit" class="btn btn-success" ng-click="backToHome()"
+				style="position: absolute; right: 0; bottom: 0;">
+				<i class="fa fa-chevron-left"></i>Back To Home
+			</button>
+			<br>
+		</div>
+	</div>
+
+	<!-- ----------------------------------------------Crop Page close-------------------------------------------- -->
+
+	<!-- ----------------------------------------------Seed Page------------------------------------------------- -->
+
+	<div id="Seed_div" ng-if="seed_status=='true'">
+		<section class="breadcrumbs-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<h2>Seed</h2>
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+							<li>
+							<li class="breadcrumb-item active">Seed</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div class="col-md-10 col-md-offset-1">
+				<h2>Intriduction</h2>
+				<font size="4.5" color="black"> Seeds are the foundation of
+					agriculture. Technology has modernized much of farming's day-to-day
+					operations, but without a steady supply of high-quality seed,
+					yields and crop quality would be greatly decreased. Seed quality
+					plays an important role in the production of agronomic and
+					horticultural crops.<br> Characteristics such as trueness to
+					variety, germination percentage, purity, vigor, and appearance are
+					important to farmers planting crops and to homeowners establishing
+					lawns and gardens. Achieving and maintaining high seed quality is
+					the goal of every professional seed producer.
+				</font>
+				<h2>How to ensure seed quality</h2>
+				<font size="4.5" color="black">Seed is the foundation of any
+					crop. It must be grown, harvested, and processed correctly for best
+					yield and quality results. Sowing good quality seeds leads to lower
+					seed rate, better emergence (>70%), more uniformity, less
+					replanting, and vigorous early growth which helps to increase
+					resistance to insects and diseases, and decrease weeds. As a
+					result, yield can increase by 5−20%.</font> <br>
+				<button type="link" class="btn" ng-click="purity_page()"
+					style="background-color: white; border-color: white; font-size: 20px;">Varietal
+					purity</button>
+				<button type="link" class="btn" ng-click="viability_page()"
+					style="background-color: white; border-color: white; font-size: 20px;">Seed
+					viability</button>
+				<button type="link" class="btn" ng-click="moisture_page()"
+					style="background-color: white; border-color: white; font-size: 20px;">Moisture
+					content</button>
+
+			</div>
+		</section>
+	</div>
+
+
+	<div class="purity_div col-md-10 col-md-offset-1"
+		ng-if="purity_status=='true'">
+		<section class="breadcrumbs-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-md-offset-1">
+						<font size="4.5" color="black">To determine the genetic
+							purity status of a given seed lot of the notified cultivar /
+							hybrid and the extent to which the sample in question conforms to
+							the prescribed standards.</font>
+						<h2>Seed lot purity</h2>
+						<font size="4.5" color="black"> Impurities refer to the
+							degree of contamination caused by (1) weed seeds, (2) seeds of
+							other crops or species, and (3) inert material such as stones,
+							dirt, or twigs. It is expressed as a percentage, by weight<br>
+							To measure seed lot purity:<br> 1. Randomly select a seed
+							sample. 100 g is a good sample size.<br> 2. Weigh the
+							sample. [A]<br> 3. Remove all of the weed and other crop
+							seeds.<br> 4. Weigh the removed weed and other crop seed
+							matter. [B]<br> 5. Compute the weed percentage using the
+							following formula:<br> <img alt="" src="IMG/weed.png"><br>
+							6. Weigh the inert matter removed from the sample [C], the inert
+							matter percentage is calculated using the formula: <img alt=""
+							src="IMG/Inert_matter.png">
+						</font>
+
+						<h2>Germination Percentage</h2>
+						<font size="4.5" color="black"> Germination percentage
+							expresses the proportion of the total number of seeds that are
+							alive. Good seeds have more than 80% germination rate.Many
+							varieties have a dormancy period immediately after harvest. When
+							stored under traditional open systems, the germination rate of
+							most rice seed begins to deteriorate rapidly after 6 months.<br>
+							<br>To test seed germination:<br> 1. Select a number of
+							small random samples from the seed to be planted and select a
+							subset (e.g., 200 seeds) of the combined sample. Soak the seed in
+							water for 24 hours.<br> 2. Arrange 100 soaked seeds in a
+							grid pattern on a wet paper towel.<br> Place the paper in a
+							closed container or<br> Cover the seeds with another moist
+							paper towel and roll together and place the sample in a plastic
+							bag<br> 3. Ensure paper remains moist (but not wet to the
+							point of water running off – or seed will rot).<br> 4. Count
+							the germinated seeds 3 and 5 days later and record how many have
+							germinated.<br> 5. Compute the germination percentage using
+							the following formula: <img alt="" src="IMG/germination.png"><br>At
+							least 80 seeds should have germinated to be considered "good
+							seed" (80% germination).
+						</font>
+
+						<h2>Discoloration</h2>
+						<font size="4.5" color="black"> Fungi, bacteria, and
+							environmental conditions such as high humidity and temperature
+							(i.e. 27−35°) cause discoloration. Other rice diseases do not
+							produce consistent discoloration. Any seed having more than 0.5%
+							differently colored or spotted seed surface is considered
+							discolored. Discoloration can occur on fully or partially filled
+							or empty grains.<br> <br>There are two types of
+							discoloration on rice seeds:<br> 1. Spotting, which is
+							caused by certain diseases (brown spot) or insects (rice bug
+							feeding damage)<br> 2. Discoloration on a portion or
+							portions of rice seeds can be caused by black kernel fungus,
+							stackburn disease, or sheath rot on certain occasions.<br>
+							3. Red Rice kernels are not acceptable in the rice market place.
+							Kernels should not have more than 25% of its surface area colored
+							red or red streaked
+						</font>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+
+	<div calss="viability_div" ng-if="viability_status=='true'">
+		<section class="breadcrumbs-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<font size="4.5" color="black"> The viability of seed in
+							the field is determined by its germination potential, vigor, and
+							moisture level. The rate of germination is an indicator of
+							vigor.Rapid seed germination increases the chance that seed will
+							establish well in the field.<br>Seed vigor refers to the
+							seed’s level of activity and performance during germination and
+							seedling emergence. The ability of the germinating seed to
+							continue to grow and survive is important in crop
+							establishment.Seeds that are low in vigor generally produce weak
+							seedlings that are susceptible to environmental stresses. On the
+							other hand, seeds that are high in vigor produce early and
+							uniform stand, which gives them a competitive advantage against
+							environmental stresses.<br> High quality seeds are free from
+							weed seeds, seed-borne diseases, insects, pathogens, and other
+							extraneous matter. They should also be free from various types of
+							mechanical injury that reduce germination and seedling vigor.
+						</font>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<div calss="moisture_div" ng-if="moisture_status=='true'">
+		<section class="breadcrumbs-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<font size="4.5" color="black"> Moisture content is the
+							amount of water in the grain.<br> It influences the life and
+							vigor of the seed. The amount of moisture should be less than
+							14%, and preferably less than 12% for extended storage times.
+						</font>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+
+
+
+
+
+	<!-- ----------------------------------------------Seed Page close-------------------------------------------- -->
+
+	<!-- ------------------------------Forget password close ---------------------------------------->
+	<!-- ------------------------------------------------Footer------------------------------------------------------>
+
+	<footer class="full-footer col-md-12">
+		<div class="container top-footer">
+			<hr>
+			<div class="background-primary padding text-center">
+				<a style="color: black;" class="p-1" href="#"> <i
+					class="fa fa-2x fa-facebook-square"></i></a> <a style="color: black;"
+					class="p-1" href="#"> <i class="fa fa-2x fa-google-plus-square"></i></a>
+				<a style="color: black;" class="p-1" href="#"> <i
+					class="fa fa-2x fa-twitter-square"></i></a> <a style="color: black;"
+					class="p-1" href="#"> <i class="fa fa-2x fa-instagram"></i></a>
+				<hr>
+			</div>
+
+			<div class="col-md-4">
+				<img src="./IMG/farmer-buddy.jpg" width="50" height="50" /> <font
+					color="black" size="5">Farmer-Buddy</font>
+				<p>
+					Farmer-Buddy is a website which is <br> specially designed to
+					help our farmers<span id="dots">...</span><span id="more">
+						regarding the information they need such as<br> crops,
+						pesticides, fertilizers seeds, etc<br> Farmer must be
+						registered with our system<br> and should login to access our
+						services.
+					</span>
+				</p>
+				<button onclick="myFunction()" id="myBtn">Read more</button>
+				<script>
+						function myFunction() {
+							var dots = document.getElementById("dots");
+							var moreText = document.getElementById("more");
+							var btnText = document.getElementById("myBtn");
+
+							if (dots.style.display === "none") {
+								dots.style.display = "inline";
+								btnText.innerHTML = "Read more";
+								moreText.style.display = "none";
+							} else {
+								dots.style.display = "none";
+								btnText.innerHTML = "Read less";
+								moreText.style.display = "inline";
+							}
+						}
+					</script>
+			</div>
+
+			<div class="col-md-4">
+				<font color="black" size="5">Related Links</font><br> <a
+					href="#">Crop Information</a><br> <a href="#">Pesticides
+					and fertilizers</a><br> <a href="#">Government Schemes</a><br>
+				<a href="#">Order </a>
+			</div>
+			<div class="col-md-4">
+				<font color="black" size="5">Contact us</font><br> <a
+					style="color: black;" class="p-1" href="#"><i
+					class="fa fa-map-marker-alt">Address:Block No:2,Karvenagar,
+						Pune-52.</i></a><br> <a style="color: black;" class="p-1"
+					href="mailto:abc@gmail.com"><i class="fa fa-envelope">Email:
+						farmers.buddyhelp@gmail.com</i></a><br> <a style="color: black;"
+					class="p-1" href="mailto:abc@gmail.com"><i class="fa fa-phone">Phone:(+91
+						7798839371)</i></a><br> <a style="color: black;" class="p-1"
+					href="mailto:abc@gmail.com"><i class="fa fa-twitter">Twitter</i></a><br>
+				<a style="color: black;" class="p-1" href="mailto:abc@gmail.com"><i
+					class="fa fa-facebook">Facebook</i></a>
+			</div>
+		</div>
+		<div class="container-fluid bottom-footer">
+			<div class="row">
+				<div class="col-12 text-center">
+					<p style="color: white;">Copyrights @ 2020 - All rights
+						reserved</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- -------------------------------------Footer close------------------------------------------ -->
+
+
+	</div>
+</body>
+
+
+
+<script>
+	var app = angular.module('farmer-buddy-app', []);
+	app.controller('farmer-buddy-ctrl', function($scope, $http) {
+		$scope.login_status = "false";
+		$scope.registration_status = "false";
+		$scope.welcome_status = "false";
+		$scope.contact_status = "false";
+		$scope.carousel_status = "false";
+		$scope.forget_pass_status = "false";
+		$scope.checkpass = "true";
+		$scope.regdetail = "";
+		$scope.about_status = "false";
+		$scope.crop_status = "false";
+		$scope.seed_status = "false";
+		$scope.purity_status = "false";
+		$scope.viability_status = "false";
+		$scope.moisture_status = "false";
+		$scope.crop_detail_status = "false";
+		$scope.context_path = "http://localhost:2020";
+		$scope.cropdesc_status = "false";
+		$scope.cropid_desc = "";
+
+		$scope.loginUser = function(uname, pwd) {
+			console.log("changename function called");
+			$http.get(
+					$scope.context_path + "/user/login?uname=" + uname
+							+ "&pwd=" + pwd).then(function(response) {
+				$scope.userdetail = response.data;
+				console.log($scope.userdetail);
+				return angular.fromJson($scope.userdetail);
+			});
+		}
+
+		$scope.registerUser = function(firstname, lastname, username, pwd,
+				cpwd, email, mobile) {
+			console.log("Firstname:" + firstname + "Lastname:" + lastname
+					+ "Username:" + username + "Password:" + pwd + "Email:"
+					+ email + "mobile:" + mobile);
+			if (pwd == cpwd) {
+				$scope.checkpass = 'true';
+				$http.get(
+						$scope.context_path + "/user/create?firstname="
+								+ firstname + "&lastname=" + lastname
+								+ "&username=" + username + "&pwd=" + pwd
+								+ "&email=" + email + "&mobile=" + mobile)
+						.then(function(response) {
+							$scope.regdetail = response.data;
+							console.log($scope.regdetail);
+							return angular.fromJson($scope.regdetail);
+						});
+
+			} else {
+				$scope.checkpass = 'false';
+			}
+		}
+
+		$scope.contactUs = function(fullname, email, mobile, district, subject,
+				description) {
+			console.log("Fullname:" + fullname + "Email:" + email + "mobile:"
+					+ mobile + "district:" + district + "subject:" + subject
+					+ "Description:" + description);
+
+			$http.get(
+					$scope.context_path + "/user/contact?fullname=" + fullname
+							+ "&email=" + email + "&mobile=" + mobile
+							+ "&district=" + district + "&subject=" + subject
+							+ "&description=" + description).then(
+					function(response) {
+						$scope.contactdetail = response.data;
+						console.log($scope.contactdetail);
+						return angular.fromJson($scope.contactdetail);
+					});
+		}
+
+		$scope.populateDistricts = function() {
+			$http.get($scope.context_path + "/crop/getAllDistricts").then(
+					function(response) {
+						$scope.districts = response.data;
+						console.log($scope.districts);
+						return angular.fromJson($scope.districts);
+					});
+		}
+
+		$scope.populateCropTypes = function(croptypeids) {
+			$http.get(
+					$scope.context_path + "/crop/croptypes?croptypeids="
+							+ croptypeids).then(function(response) {
+				$scope.croptypes = response.data;
+				console.log($scope.croptypes);
+				return angular.fromJson($scope.croptypesa);
+			});
+		}
+
+		$scope.cropgo = function(croptypeid) {
+			$http.get(
+					$scope.context_path + "/crop/crops?croptypeid="
+							+ croptypeid).then(function(response) {
+				$scope.crops = response.data;
+				console.log($scope.crops);
+				return angular.fromJson($scope.crops);
+			});
+			$scope.crop_detail_status = "true";
+		}
+
+		$scope.backToHome = function() {
+			console.log("Good morning!!");
+			$scope.login_status = "false";
+			$scope.registration_status = "false";
+			$scope.welcome_status = "false";
+			$scope.contact_status = "false";
+			$scope.carousel_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.about_status = "false";
+			$scope.crop_status = "false";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+		}
+		$scope.registration_page = function() {
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "true";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "false";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+		$scope.contact_page = function() {
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "true";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "false";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+
+		$scope.welcome_page = function() {
+			$scope.welcome_status = "true";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "false";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+
+		$scope.about_page = function() {
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "true";
+			$scope.crop_status = "false";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+
+		$scope.crop_page = function() {
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "true";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+
+		$scope.seed_page = function() {
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "flase";
+			$scope.seed_status = "true";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+
+		$scope.purity_page = function() {
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "flase";
+			$scope.seed_status = "true";
+			$scope.purity_status = "true";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+
+		$scope.viability_page = function() {
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "flase";
+			$scope.seed_status = "true";
+			$scope.purity_status = "false";
+			$scope.viability_status = "true";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+
+		$scope.moisture_page = function() {
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "flase";
+			$scope.seed_status = "true";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "true";
+			$scope.cropdesc_status = "false";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+		
+		$scope.cropdesc_page = function(cropid) {
+			$http.get($scope.context_path + "/crop/crop?cropid="+cropid).then(
+					function(response) {
+						$scope.cropid_desc = response.data;
+						console.log($scope.cropid_desc);
+						return angular.fromJson($scope.cropid_desc);
+					});
+			
+			
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "flase";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "true";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+		
+		$scope.forget_password = function() {
+			console.log("Prajakta");
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "true";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "false";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+		}
+
+	});
+</script>
+</html>
