@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.model.ContactDetail;
+import com.example.demo.model.Crop;
 import com.example.demo.model.User;
 import com.example.demo.model.UserDetail;
 import com.example.demo.repo.ContactUsRepository;
@@ -50,6 +51,34 @@ public class UserController {
 		return new UserUtility().loginUtility(userName, password,userRepository);
 	}
 	
+	@GET
+	@Path("/profile")
+	@Produces("text/html")
+	public String profile(@QueryParam ("userid") int userId)
+	{
+		JSONArray userprofileArray = new JSONArray();
+		JSONObject userprofileObject = null;
+		
+		UserDetail profile = userDetailRepository.findUserId(userId);
+		
+		if(profile != null)
+		{
+			userprofileObject = new JSONObject();
+			userprofileObject.put("status", "ok");
+			userprofileObject.put("firstname", profile.getFirstName());
+			userprofileObject.put("lastname", profile.getLastName());
+			userprofileObject.put("mobile", profile.getMobile());
+			userprofileObject.put("email", profile.getEmail());
+			userprofileArray.put(userprofileObject);
+		}
+		else
+		{
+			userprofileObject = new JSONObject();
+			userprofileObject.put("status", "notok");
+			userprofileArray.put(userprofileObject);
+		}
+		return userprofileArray.toString();			
+	}
 	
 	@Path("/create")
 	@GET
@@ -160,5 +189,6 @@ public class UserController {
 		  return ResponseEntity.ok().body(user);
 		 }
 
+	
 }
 

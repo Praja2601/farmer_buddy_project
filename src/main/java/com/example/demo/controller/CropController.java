@@ -17,9 +17,11 @@ import org.springframework.stereotype.Component;
 import com.example.demo.model.Crop;
 import com.example.demo.model.CropType;
 import com.example.demo.model.District;
+import com.example.demo.model.Pesticide;
 import com.example.demo.repo.CropRepository;
 import com.example.demo.repo.CropTypeRepository;
 import com.example.demo.repo.DistrictRepository;
+import com.example.demo.repo.PesticideRepository;
 
 
 @Component
@@ -34,6 +36,9 @@ public class CropController {
 	
 	@Autowired
 	CropRepository cropRepository;
+	
+	@Autowired
+	PesticideRepository pesticideRepository;
 	
 	@GET
 	@Path("/getAllDistricts")
@@ -137,7 +142,7 @@ public class CropController {
 			if(crops.size()>0)
 			{
 				for(Crop cp : crops) {
-					System.out.println(cp.getCropName()+" "+cp.getCropTypeId() + "  "+cp.getCropId());
+					System.out.println(cp.getCropName()+" "+cp.getCropTypeId() + "  "+cp.getCropId()+" "+cp.getFertilizer());
 					cropObject = new JSONObject();
 					cropObject.put("status", "ok");
 					cropObject.put("croptypeid", cp.getCropTypeId());
@@ -151,6 +156,7 @@ public class CropController {
 					cropObject.put("sowing", cp.getSowIng());
 					cropObject.put("irrigation", cp.getIrrigation());
 					cropObject.put("cropimg", cp.getCropImg());
+					cropObject.put("fertilizer", cp.getFertilizer());
 					cropArray.put(cropObject);
 				}
 			}
@@ -193,6 +199,7 @@ public class CropController {
 			cropdescObject.put("sowing", crop.getSowIng());
 			cropdescObject.put("irrigation", crop.getIrrigation());
 			cropdescObject.put("cropimg", crop.getCropImg());
+			cropdescObject.put("fertilizer", crop.getFertilizer());
 			cropdescArray.put(cropdescObject);
 		}
 		else
@@ -203,6 +210,48 @@ public class CropController {
 		}
 		return cropdescArray.toString();
 			
+	}
+	
+	@GET
+	@Path("/pesticide")
+	@Produces("text/html")
+	public String getPesticide(@QueryParam ("cropid") String cropId)
+	{
+		JSONArray pesticideArray = new JSONArray();
+		JSONObject pesticideObject = null;
+		
+		List<Pesticide> pesticide = pesticideRepository.findByCropIdsIn(cropId);
+		
+		if(pesticide != null)
+		{
+			if(pesticide.size()>0)
+			{
+				for(Pesticide pest : pesticide) {
+					System.out.println(pest.getPesticideId()+" "+pest.getDisease()+" "+pest.getSolution()+" "+pest.getCropId());
+					pesticideObject = new JSONObject();
+					pesticideObject.put("status", "ok");
+					pesticideObject.put("cropid", pest.getCropId());
+					pesticideObject.put("pesticideid", pest.getPesticideId());
+					pesticideObject.put("disease", pest.getDisease());
+					pesticideObject.put("solution", pest.getSolution());
+					pesticideArray.put(pesticideObject);
+				}
+			}
+			else
+			{
+				pesticideObject = new JSONObject();
+				pesticideObject.put("status", "notok");
+				pesticideArray.put(pesticideObject);
+			}
+		}
+		else
+		{
+			pesticideObject = new JSONObject();
+			pesticideObject.put("status", "notok");
+			pesticideArray.put(pesticideObject);
+		}
+		
+		return pesticideArray.toString();
 	}
 	
 	

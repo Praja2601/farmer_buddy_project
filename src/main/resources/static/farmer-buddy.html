@@ -119,15 +119,50 @@ p.date {
 .cropdetail {
 	color: #191970;
 }
+
+.desc {
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+.image {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.td .th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.tr:nth-child(even) {
+  background-color: #dddddd;
+}
+#more {display: none;}
+
+#main.header{
+	display: none ;
+}
 </style>
 </head>
 
 
 <body>
 	<div ng-app="farmer-buddy-app" ng-controller="farmer-buddy-ctrl">
-
-		<!-- ---------------------------------TITLE AND LOGO ----------------------------------------- -->
-		<div class="col-sm-offset-3 col-md-6"
+	<div id="main">
+			<!-- ---------------------------------TITLE AND LOGO ----------------------------------------- -->
+	<div class="col-sm-offset-3 col-md-6"
 			style="font-variant: small-caps;">
 
 			<!-- Farmer buddy logo -->
@@ -136,209 +171,9 @@ p.date {
 			<!-- Title farmer buddy -->
 			<font color="green" size="70"><b> Farmer-Buddy </b></font>
 		</div>
-
-		<!-- ----------------------------------------------Header--------------------------------------------------------->
-		<header>
-			<div class="p-1" id="topHeader">
-				<div class="container">
-					<div class="row">
-						<div class="col-12 text-right">
-							<a class="p-1" href="tel:+917798839371"><i
-								class="fa fa-phone">7798839371</i></a> <a class="p-1"
-								href="mailto:farmers.buddyhelp@gmail.com"><i
-								class="fa fa-envelope">farmers.buddyhelp@gmail.com</i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="bottomHeader">
-				<div class="container-fluid">
-					<nav class="navbar navbar-dark navbar-expand-md"
-						style="background-color: Orange;">
-						<button type="submit"
-							style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
-							class="btn btn-warning" ng-click="welcome_page()">Home</button>
-						<div class="dropdown">
-							<button type="submit"
-								style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
-								class="btn btn-warning" data-toggle="dropdown">
-								Services <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-								<button type="submit"
-									style="color: black; padding: 17px 16px; border-color: white; background-color: white;"
-									class="btn btn-success" ng-click="crop_page()">Crop</button>
-								<button type="submit"
-									style="color: black; padding: 17px 16px; border-color: white; background-color: white;"
-									class="btn btn-success" style="background-color: #FAD7A0;"
-									ng-click="fertilizer_page()">Fertilizers</button>
-								<button type="submit"
-									style="color: black; border-color: white; background-color: white; padding: 17px 16px;"
-									class="btn btn-success" ng-click="pesticide_page()">Pesticides</button>
-								<button type="submit"
-									style="color: black; border-color: white; background-color: white; padding: 17px 16px;"
-									class="btn btn-success" ng-click="seed_page()">Seed</button>
-							</ul>
-						</div>
-						<button type="submit"
-							style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
-							class="btn btn-success" style="background-color: #FAD7A0;"
-							ng-click="about_page()">About</button>
-						<button type="submit"
-							style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
-							class="btn btn-success" ng-click="contact_page()">Contact</button>
-					</nav>
-				</div>
-			</div>
-		</header>
-		<!-- ------------------------------------------------------------------------------------------------- -->
-		<!-- -----------------------------login success/ fail -------------------------------------------------------- -->
-
-		<div ng-repeat="detail in userdetail">
-			<!-- Its like Java for loop -->
-			<div ng-if="detail.status=='ok'">
-				<div ng-init="welcome_page()">
-					<div id="welcome_div" ng-if="welcome_status=='true'">
-						<br>
-						<div id="myModal" class="modal fade" role="dialog">
-							<div class="modal-dialog">
-								<!-- Modal content-->
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title">Modal Header</h4>
-									</div>
-									<div class="modal-body">
-										<p>Login Successful !!</p>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">Close</button>
-									</div>
-								</div>
-
-							</div>
-						</div>
-						<section>
-							<div class="container">
-								<div class="row">
-									<div class="col-12">
-										<h2>Agriculture</h2>
-										<br> <font size="4.5" color="black"> Agriculture
-											is the science and art of cultivating plants and livestock.
-											Agriculture was the key development in the rise of sedentary
-											human civilization, whereby farming of domesticated species
-											created food surpluses that enabled people to live in cities.
-											The history of agriculture began thousands of years ago.<br>
-											Agriculture is the process of producing food, feed, fiber and
-											many other desired products by the cultivation of certain
-											plants and the raising of domesticated animals (livestock).
-											The practice of agriculture is also known as "farming", while
-											scientists, inventors and others devoted to improving farming
-											methods and implements are also said to be engaged in
-											agriculture.<br> Maharashtra is a leading State in
-											agriculture. Principal crops grown in the State are rice,
-											jowar, bajra, wheat, tur, mung, urad, gram and other pulses.
-											The State is a major producer of oilseeds. Groundnut,
-											sunflower, soyabean are the major oil seed crops. The
-											important cash crops are cotton, sugarcane, turmeric and
-											vegetables. State is pioneer in onion production in the
-											country. It is today emerging as an important horticultural
-											State in the country. Different types of soil, diverse agro
-											climatic conditions, adequate technical manpower, well
-											developed communication facilities, increasing trend in drip
-											irrigation, green house, use of cool chain facilities and
-											vibrant farmer organisation offer wide opportunities to grow
-											different horticultural crops in the State.
-										</font>
-
-										<h2>Food Processing</h2>
-										<br> <font size="4.5" color="black">Food
-											processing industries in Maharashtra consists of very basic
-											processing. The main processing industries in the State are
-											in the sectors of sugar, milk, poultry, rice mill, flour
-											mill, meat, edible oil, vanaspati, fruit and vegetable units,
-											milk processing units etc. There exist immense opportunities
-											for modernising food processing units in the State. Rice,
-											wheat, soyabean, jawar, grapes, pomegranates and mangoes are
-											the main crops that are available in the State for primary
-											and secondary process. </font>
-
-										<h2>Floriculture</h2>
-										<br> <font size="4.5" color="black">Maharashtra is
-											a major producer of floriculture products with more than 4000
-											hectares of area under various flowers. The major traditional
-											flowers grown in Maharashtra are rose, chrysanthemum,
-											marigold, jasmine and tuberose. Whereas, gladioluses, aster,
-											zinnia, Stacie, lilies, gerberas and carnations are grown
-											among the non-traditional flowers.The climate of Pune and
-											Nashik region, facilitate the setting up of such units
-											without heavy investment on environment control. Maharashtra
-											is offering state of the art infrastructure for floriculture
-											industry to grow.</font>
-										<hr>
-									</div>
-								</div>
-							</div>
-						</section>
-						<section class="section background-white">
-							<div class="container">
-								<div class="row">
-									<div class="col-md-4 margin-m-bottom">
-										<img class="margin-bottom" src="IMG/ricecrop.jpg"
-											alt="Rice Crop" height=300 width=330>
-										<p style="text-align: center; font-size: 50;">Food Crop</p>
-									</div>
-									<div class="col-md-4 margin-m-bottom">
-										<img class="margin-bottom" src="IMG/vegecrop.jpg"
-											alt="Vege crop" height=300 width=330>
-										<p style="text-align: center; font-size: 50;">Vegetable
-											Crop</p>
-									</div>
-									<div class="col-md-4 margin-m-bottom">
-										<img class="margin-bottom" src="IMG/floriculture.jpg"
-											alt="Floriculture" height=300 width=330>
-										<p style="text-align: center; font-size: 50;">Floriculture
-											Crop</p>
-									</div>
-								</div>
-							</div>
-						</section>
-
-					</div>
-				</div>
-			</div>
-			<div ng-if="detail.status=='notok'">
-				Invalid Username or password! Try again !
-				<div id="myModal" class="modal fade" role="dialog">
-					<div class="modal-dialog">
-
-						<!-- Modal content-->
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title">Modal Header</h4>
-							</div>
-							<div class="modal-body">
-								<p>
-									Invalid Username or password! <br>Please Try again !
-								</p>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default"
-									data-dismiss="modal">Close</button>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-
-
 		<!-- ----------------------------------REGISTRATION FORM--------------------------------------------------- -->
 		<div id="Registration_div" ng-if="registration_status=='true'"
-			class="jumbotron col-md-offset-3 col-md-6"
+			class="main col-md-offset-3 col-md-6"
 			style="background-color: white; font-stretch: ultra-expanded">
 			<div class="text-center">
 				<!-- Registration check ----------------------------------------------------------------------->
@@ -433,7 +268,7 @@ p.date {
 			ng-if="carousel_status=='false'" data-ride="carousel">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>q	q	sx		     
 				<li data-target="#myCarousel" data-slide-to="1"></li>
 				<li data-target="#myCarousel" data-slide-to="2"></li>
 				<li data-target="#myCarousel" data-slide-to="3"></li>
@@ -470,7 +305,7 @@ p.date {
 		</div>
 
 		<!-- ------------------------------------LOGIN FORM------------------------------------------------ -->
-		<div class="jumbotron col-sm-offset-3 col-md-6"
+		<div class="main col-sm-offset-3 col-md-6"
 			ng-if="login_status=='false'"
 			style="background-color: white; font-stretch: ultra-expanded; padding: 1px, 48px">
 			<div ng-repeat="rdetail in regdetail">
@@ -483,9 +318,11 @@ p.date {
 			<!--Div for login -->
 			<div id="Login_div">
 
-				<h3>
-					<font color="black"> <b>USER LOGIN </b></font>
-				</h3>
+				<div class="text-center">
+					<h3>
+						<font color="black"> <b>USER LOGIN </b></font>
+					</h3>
+				</div>
 
 				<!--Div for username  -->
 				<div class="form-group">
@@ -503,31 +340,251 @@ p.date {
 						id="pwd" ng-model="pwd" placeholder="Password">
 				</div>
 
-				<!-- login button -->
-				<button type="submit" class="btn btn-success"
-					ng-click="loginUser(uname,pwd)">Login</button>
+
+				<label><input type="checkbox" name="Remember" checked>Remember
+					me</label>
 
 				<!-- forget password -->
-				<button type="link" class="btn btn-success"
-					ng-click="forget_password()"
-					style="color: blue; background-color: white; border-color: white;">
-					<u>Forgot Password?</u>
-				</button>
+				<button type="submit" class="btn btn-link float-right"
+					ng-click="forget_password()">Forgot Password?</button>
+				<br>
+
+				<!-- login button -->
+				<div class="text-center">
+					<button type="submit" class="btn btn-success btn-block"
+						ng-click="loginUser(uname,pwd)">Login</button>
+
+				</div>
+
+				<div class="form-group">
+					<div class="text-left">
+						<label><br>Not registered yet? Click on Signup
+							button.</label>
+
+						<button type="submit" class="btn btn-primary btn-block"
+							ng-click="registration_page()">Sign up</button>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- ------------------------------------------------Login page Page------------------------------------------- -->
+	
+	</div>
+	
+	<div>
 
 
-				<!-- a href="#" onclick=""><font align="right"> <u>Forgot Password?</u></font></a> -->
-				<div class="text-left">
-					<label>Are you a new user?</label><br>
 
-					<button type="submit" class="btn btn-success"
-						ng-click="registration_page()">Sign up</button>
+		<!-- ----------------------------------------------Header--------------------------------------------------------->
+		<header class="header">
+			<div class="p-1" id="topHeader">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 text-right">
+							<a class="p-1" href="tel:+917798839371"><i
+								class="fa fa-phone">7798839371</i></a> <a class="p-1"
+								href="mailto:farmers.buddyhelp@gmail.com"><i
+								class="fa fa-envelope">farmers.buddyhelp@gmail.com</i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="bottomHeader">
+				<div class="container-fluid">
+					<nav class="navbar navbar-dark navbar-expand-md"
+						style="background-color: Orange;">
+						<button type="submit"
+							style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
+							class="btn btn-warning" ng-click="home_page()">Home</button>
+						<div class="dropdown">
+							<button type="submit"
+								style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
+								class="btn btn-warning" data-toggle="dropdown">
+								Services <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<button type="submit"
+									style="color: black; padding: 17px 16px; border-color: white; background-color: white;"
+									class="btn btn-success" ng-click="crop_page()">Crop</button>
+								<button type="submit"
+									style="color: black; padding: 17px 16px; border-color: white; background-color: white;"
+									class="btn btn-success" style="background-color: #FAD7A0;"
+									ng-click="fertilizer_page()">Fertilizers</button>
+								<button type="submit"
+									style="color: black; border-color: white; background-color: white; padding: 17px 16px;"
+									class="btn btn-success" ng-click="pesticide_page()">Pesticides</button>
+								<button type="submit"
+									style="color: black; border-color: white; background-color: white; padding: 17px 16px;"
+									class="btn btn-success" ng-click="seed_page()">Seed</button>
+							</ul>
+						</div>
+						<button type="submit"
+							style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
+							class="btn btn-success" style="background-color: #FAD7A0;"
+							ng-click="profile_page()">Profile</button>
+						<button type="submit"
+							style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
+							class="btn btn-success" style="background-color: #FAD7A0;"
+							ng-click="about_page()">About</button>
+						<button type="submit"
+							style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
+							class="btn btn-success" ng-click="contact_page()">Contact</button>
+							
+						<button type="submit"
+							style="color: black; background-color: orange; border-color: orange; padding: 17px 16px; float: right;"
+							class="btn btn-success" ng-click="backToHome()" >Logout</button>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<!-- ------------------------------------------------------------------------------------------------- -->
+		<!-- -----------------------------login success/ fail -------------------------------------------------------- -->
+
+		<div ng-repeat="detail in userdetail">
+			<!-- Its like Java for loop -->
+			<div ng-if="detail.status=='ok'">
+				<div ng-init="welcome_page()">
+					<div id="welcome_div" ng-if="welcome_status=='true'">
+						<br>
+						<div id="myModal" class="modal fade" role="dialog">
+							<div class="modal-dialog">
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">Modal Header</h4>
+									</div>
+									<div class="modal-body">
+										<p>Login Successful !!</p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">Close</button>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<section>
+							<div class="col-sm-offset-2 col-md-8">
+								<div class="row">
+									<div class="col-12">
+										<h2 class="cropdetail">Agriculture</h2>
+										<br> <font size="4.5" color="black"> Agriculture
+											is the science and art of cultivating plants and livestock.
+											Agriculture was the key development in the rise of sedentary
+											human civilization, whereby farming of domesticated species
+											created food surpluses that enabled people to live in cities.
+											The history of agriculture began thousands of years ago.<br>
+											Agriculture is the process of producing food, feed, fiber and
+											many other desired products by the cultivation of certain
+											plants and the raising of domesticated animals (livestock).
+											The practice of agriculture is also known as "farming", while
+											scientists, inventors and others devoted to improving farming
+											methods and implements are also said to be engaged in
+											agriculture.<br> Maharashtra is a leading State in
+											agriculture. Principal crops grown in the State are rice,
+											jowar, bajra, wheat, tur, mung, urad, gram and other pulses.
+											The State is a major producer of oilseeds. Groundnut,
+											sunflower, soyabean are the major oil seed crops. The
+											important cash crops are cotton, sugarcane, turmeric and
+											vegetables. State is pioneer in onion production in the
+											country. It is today emerging as an important horticultural
+											State in the country. Different types of soil, diverse agro
+											climatic conditions, adequate technical manpower, well
+											developed communication facilities, increasing trend in drip
+											irrigation, green house, use of cool chain facilities and
+											vibrant farmer organisation offer wide opportunities to grow
+											different horticultural crops in the State.
+										</font>
+
+										<h2 class="cropdetail">Food Processing</h2>
+										<br> <font size="4.5" color="black">Food
+											processing industries in Maharashtra consists of very basic
+											processing. The main processing industries in the State are
+											in the sectors of sugar, milk, poultry, rice mill, flour
+											mill, meat, edible oil, vanaspati, fruit and vegetable units,
+											milk processing units etc. There exist immense opportunities
+											for modernising food processing units in the State. Rice,
+											wheat, soyabean, jawar, grapes, pomegranates and mangoes are
+											the main crops that are available in the State for primary
+											and secondary process. </font>
+
+										<h2 class="cropdetail">Floriculture</h2>
+										<br> <font size="4.5" color="black">Maharashtra is
+											a major producer of floriculture products with more than 4000
+											hectares of area under various flowers. The major traditional
+											flowers grown in Maharashtra are rose, chrysanthemum,
+											marigold, jasmine and tuberose. Whereas, gladioluses, aster,
+											zinnia, Stacie, lilies, gerberas and carnations are grown
+											among the non-traditional flowers.The climate of Pune and
+											Nashik region, facilitate the setting up of such units
+											without heavy investment on environment control. Maharashtra
+											is offering state of the art infrastructure for floriculture
+											industry to grow.</font>
+										<hr>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="section background-white">
+							<div class="col-sm-offset-2 col-md-8">
+								<div class="row">
+									<div class="col-md-4 margin-m-bottom">
+										<img class="margin-bottom" src="IMG/ricecrop.jpg"
+											alt="Rice Crop" height=250 width=280>
+										<p style="text-align: center; font-size: 50;">Food Crop</p>
+									</div>
+									<div class="col-md-4 margin-m-bottom">
+										<img class="margin-bottom" src="IMG/vegecrop.jpg"
+											alt="Vege crop" height=250 width=280>
+										<p style="text-align: center; font-size: 50;">Vegetable
+											Crop</p>
+									</div>
+									<div class="col-md-4 margin-m-bottom">
+										<img class="margin-bottom" src="IMG/floriculture.jpg"
+											alt="Floriculture" height=250 width=280>
+										<p style="text-align: center; font-size: 50;">Floriculture
+											Crop</p>
+									</div>
+								</div>
+							</div>
+						</section>
+
+					</div>
+				</div>
+			</div>
+			<div ng-if="detail.status=='notok'">
+				Invalid Username or password! Try again !
+				<div id="myModal" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Modal Header</h4>
+							</div>
+							<div class="modal-body">
+								<p>
+									Invalid Username or password! <br>Please Try again !
+								</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Close</button>
+							</div>
+						</div>
+
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<!-- ------------------------------------------------Contact Page---------------------------------------- -->
-
-
+		<!-- ------------------------------------------------Contact page --------------------------------------------- -->
 
 		<div id="Contact_div" ng-if="contact_status=='true'">
 			<section class="breadcrumbs-section">
@@ -759,7 +816,8 @@ p.date {
 		</div>
 
 		<!-- ------------------------------------------------About Page close ---------------------------------------- -->
-		<!-- ------------------------------Forget password ---------------------------------------->
+
+		<!-- ------------------------------------------------Forget password -------------------------------------------->
 		<div id="forget_pass_div" ng-if="forget_pass_status=='true'"
 			class="jumbotron col-sm-12" style="background-color: white;">
 			<div class="row">
@@ -802,6 +860,7 @@ p.date {
 				</div>
 			</div>
 		</div>
+		<!-- ----------------------------------------------Forget password close ---------------------------------------->
 
 		<!-- ----------------------------------------------------Crop Page-------------------------------------------- -->
 
@@ -843,28 +902,34 @@ p.date {
 					</select><br>
 				</div>
 
-				<table class="table" ng-if="crop_detail_status=='true'">
-					<thread class="thread_dark">
-					<tr>
-						<th>Crop Name</th>
-						<th>Crop Description</th>
-						<th>Crop Image</th>
+				<!-- --------------------------------------------------------------------------- -->
+				<div class="cdetail col-sm-offset-3 col-md-6 text-center"
+					style="background-color: white; font-stretch: ultra-expanded; padding: 6px, 48px"
+					ng-if="crop_detail_status=='true'">
+					<div class="ContentDiv style--2">
+						<div class="cdetailrows" ng-repeat="crop in crops">
+							<div class="Container style--2">
+								<div class="Containerinner">
+									<p class="SubTitle text-center"
+										style="font-size: 30px; font-family: Times New Roman; text-transform: uppercase;">{{crop.cropname}}</p>
 
-					</tr>
-					</thread>
-					<tbody ng-repeat="crop in crops">
-						<tr>
-							<td>{{crop.cropname}}</td>
-							<td><button type="link" class="btn"
-									ng-click="cropdesc_page(crop.cropid)"
-									style="background-color: orange; border-color: black; font-size: 20px;">Click
-									Here</button></td>
-							<td><img class="image"
-								src="{{context_path}}{{crop.cropimg}}" height=250 width=350></td>
+									<img class="img" data-wow-duration="2.2s"
+										data-wow-delay="130ms" alt="{{crop.cropname}}"
+										src="{{context_path}}{{crop.cropimg}}" height=350 width=500><br>
+									<br>
+									<font class="desc text-justify" size="4.5" color="black">{{crop.cropdesc}} .</font>
+									<button type="button" class="btn btn-success"
+										ng-click="cropdesc_page(crop.cropid)">
+										<span>Read more..</span>
+									</button>
+									<br> <br>
 
-						</tr>
-					</tbody>
-				</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ----------------------------------------------------------------- -->
 				<div class="col-md-4" ng-repeat="crop in crops">
 					<div ng-if="crop.status=='notok'">No crop records found!!</div>
 				</div>
@@ -873,7 +938,7 @@ p.date {
 			</section>
 
 		</div>
-
+		<!-- -Crop DESC Page----------------------------------------------------- -->
 		<div id="cropdesc_div" ng-if="cropdesc_status=='true'">
 			<section class="breadcrumbs-section">
 				<div class="container">
@@ -889,305 +954,606 @@ p.date {
 					</div>
 				</div>
 			</section>
-			<section  class="col-md-10 col-md-offset-1" ng-repeat="cropdesc in cropid_desc">
-				<h2 style="color: #32CD32;">
-					<b>{{crop_desc.cropname}}</b>
+			<section class=" col-sm-offset-3 col-md-6 text-justify"
+				ng-repeat="cropdesc in cropid_desc">
+				<h2 class="text-center">
+					<b>{{cropdesc.cropname}}</b>
 				</h2>
+				<h2 class="text-center">
+					<img class="text-center" alt="{{crop.cropname}}"
+						src="{{cropdesc.cropimg}}" height=350 width=500>
+				</h2>
+				<br>
+
+				<h3 class="cropdetail">
+					<b>Description</b>
+				</h3>
+				<font size="4.5" color="black">{{cropdesc.cropdesc}}</font>
+
 				<h3 class="cropdetail">
 					<b>Climate</b>
 				</h3>
 				<font size="4.5" color="black">{{cropdesc.climate}}</font>
+
 				<h3 class="cropdetail">
 					<b>Time Period</b>
 				</h3>
 				<font size="4.5" color="black">{{cropdesc.timeperiod}}</font>
+
 				<h3 class="cropdetail">
 					<b>Soil Requirement</b>
 				</h3>
 				<font size="4.5" color="black">{{cropdesc.soilrequirement}}</font>
+
 				<h3 class="cropdetail">
 					<b>Land Preparation</b>
 				</h3>
 				<font size="4.5" color="black">{{cropdesc.landpreparation}}</font>
+
 				<h3 class="cropdetail">
 					<b>Sowing</b>
 				</h3>
 				<font size="4.5" color="black">{{cropdesc.sowing}}</font>
+
 				<h3 class="cropdetail">
 					<b>Irrigation</b>
 				</h3>
-				<font size="4.5" color="black">{{cropdesc.irrigation}}</font> <br>
+				<font size="4.5" color="black">{{cropdesc.irrigation}}<br></font>
+				
+				<h3 class="cropdetail">
+					<b>Fertilizers</b>
+				</h3>
+				<font size="4.5" color="black">{{cropdesc.fertilizer}}<br></font>
+				
+				<h3 class="cropdetail">
+					<b>Pesticides</b>
+				</h3>
+				
 			</section>
-		
-		<div class="col-md-10 col-md-offset-1">
-			<button type="submit" class="btn btn-success" ng-click="backToHome()"
-				style="position: absolute; right: 0; bottom: 0;">
-				<i class="fa fa-chevron-left"></i>Back To Home
-			</button>
-			<br>
+			<div class="col-sm-offset-3 col-md-6" ng-repeat="pesticide in pesticides">
+			
+			<table class="table">
+			<thread>
+			 <tr class="tr">
+    			<th class="th"> <h3 class="cropdetail">Disease</h3></th>
+   				<th class="th"><h3 class="cropdetail">Solution</h3></th>
+    			
+  			</tr>
+  			</thread>
+  			<tbody>
+  			<tr class="tr">
+    			<td class="td"><font size="4.5" color="black">{{pesticide.disease}}</font></td>
+    			<td class="td"><font size="4.5" color="black">{{pesticide.solution}}</font></td>
+    
+  			</tr>
+  			</tbody>
+  		</table>
+			
+			</div>
+
+			<div class="col-sm-offset-3 col-md-6">
+				<button type="submit" class="btn btn-success"
+					ng-click="backToHome()"
+					style="position: absolute; left: 0; bottom: 0;">
+					<i class="fa fa-chevron-left"></i>Back To Home
+				</button>
+				<br>
+			</div>
 		</div>
-	</div>
 
-	<!-- ----------------------------------------------Crop Page close-------------------------------------------- -->
+		<!-- ----------------------------------------------Crop Page close-------------------------------------------- -->
 
-	<!-- ----------------------------------------------Seed Page------------------------------------------------- -->
+		<!-- ----------------------------------------------Seed Page------------------------------------------------- -->
 
-	<div id="Seed_div" ng-if="seed_status=='true'">
-		<section class="breadcrumbs-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<h2>Seed</h2>
-						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
-							<li>
-							<li class="breadcrumb-item active">Seed</li>
-						</ol>
+		<div id="Seed_div" ng-if="seed_status=='true'">
+			<section class="breadcrumbs-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<h2>Seed</h2>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+								<li>
+								<li class="breadcrumb-item active">Seed</li>
+							</ol>
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-		<section>
-			<div class="col-md-10 col-md-offset-1">
-				<h2>Intriduction</h2>
-				<font size="4.5" color="black"> Seeds are the foundation of
-					agriculture. Technology has modernized much of farming's day-to-day
-					operations, but without a steady supply of high-quality seed,
-					yields and crop quality would be greatly decreased. Seed quality
-					plays an important role in the production of agronomic and
-					horticultural crops.<br> Characteristics such as trueness to
-					variety, germination percentage, purity, vigor, and appearance are
-					important to farmers planting crops and to homeowners establishing
-					lawns and gardens. Achieving and maintaining high seed quality is
-					the goal of every professional seed producer.
+			</section>
+			<section>
+				<div class="col-sm-offset-2 col-md-8">
+					<h2 class="cropdetail">Intriduction</h2>
+					<font size="4.5" color="black"> Seeds are the foundation of
+						agriculture. Technology has modernized much of farming's
+						day-to-day operations, but without a steady supply of high-quality
+						seed, yields and crop quality would be greatly decreased. Seed
+						quality plays an important role in the production of agronomic and
+						horticultural crops.<br> Characteristics such as trueness to
+						variety, germination percentage, purity, vigor, and appearance are
+						important to farmers planting crops and to homeowners establishing
+						lawns and gardens. Achieving and maintaining high seed quality is
+						the goal of every professional seed producer.
+					</font>
+					<h2 class="cropdetail">How to ensure seed quality</h2>
+					<font size="4.5" color="black">Seed is the foundation of any
+						crop. It must be grown, harvested, and processed correctly for
+						best yield and quality results. Sowing good quality seeds leads to
+						lower seed rate, better emergence (>70%), more uniformity, less
+						replanting, and vigorous early growth which helps to increase
+						resistance to insects and diseases, and decrease weeds. As a
+						result, yield can increase by 5−20%.</font> <br>
+					<button type="link" class="btn" ng-click="purity_page()"
+						style="background-color: white; border-color: white; font-size: 20px; color: blue;">Varietal
+						purity</button>
+					<button type="link" class="btn" ng-click="viability_page()"
+						style="background-color: white; border-color: white; font-size: 20px; color: blue;">Seed
+						viability</button>
+					<button type="link" class="btn" ng-click="moisture_page()"
+						style="background-color: white; border-color: white; font-size: 20px; color: blue;">Moisture
+						content</button>
+
+				</div>
+			</section>
+		</div>
+
+
+		<div class="purity_div col-sm-offset-2 col-md-8"
+			ng-if="purity_status=='true'">
+			<section class="breadcrumbs-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-offset-2 col-md-8">
+							<font size="4.5" color="black">To determine the genetic
+								purity status of a given seed lot of the notified cultivar /
+								hybrid and the extent to which the sample in question conforms
+								to the prescribed standards.</font>
+							<h2>Seed lot purity</h2>
+							<font size="4.5" color="black"> Impurities refer to the
+								degree of contamination caused by (1) weed seeds, (2) seeds of
+								other crops or species, and (3) inert material such as stones,
+								dirt, or twigs. It is expressed as a percentage, by weight<br>
+								To measure seed lot purity:<br> 1. Randomly select a seed
+								sample. 100 g is a good sample size.<br> 2. Weigh the
+								sample. [A]<br> 3. Remove all of the weed and other crop
+								seeds.<br> 4. Weigh the removed weed and other crop seed
+								matter. [B]<br> 5. Compute the weed percentage using the
+								following formula:<br> <img alt="" src="IMG/weed.png"><br>
+								6. Weigh the inert matter removed from the sample [C], the inert
+								matter percentage is calculated using the formula: <img alt=""
+								src="IMG/Inert_matter.png">
+							</font>
+
+							<h2>Germination Percentage</h2>
+							<font size="4.5" color="black"> Germination percentage
+								expresses the proportion of the total number of seeds that are
+								alive. Good seeds have more than 80% germination rate.Many
+								varieties have a dormancy period immediately after harvest. When
+								stored under traditional open systems, the germination rate of
+								most rice seed begins to deteriorate rapidly after 6 months.<br>
+								<br>To test seed germination:<br> 1. Select a number
+								of small random samples from the seed to be planted and select a
+								subset (e.g., 200 seeds) of the combined sample. Soak the seed
+								in water for 24 hours.<br> 2. Arrange 100 soaked seeds in a
+								grid pattern on a wet paper towel.<br> Place the paper in a
+								closed container or<br> Cover the seeds with another moist
+								paper towel and roll together and place the sample in a plastic
+								bag<br> 3. Ensure paper remains moist (but not wet to the
+								point of water running off – or seed will rot).<br> 4.
+								Count the germinated seeds 3 and 5 days later and record how
+								many have germinated.<br> 5. Compute the germination
+								percentage using the following formula: <img alt=""
+								src="IMG/germination.png"><br>At least 80 seeds
+								should have germinated to be considered "good seed" (80%
+								germination).
+							</font>
+
+							<h2>Discoloration</h2>
+							<font size="4.5" color="black"> Fungi, bacteria, and
+								environmental conditions such as high humidity and temperature
+								(i.e. 27−35°) cause discoloration. Other rice diseases do not
+								produce consistent discoloration. Any seed having more than 0.5%
+								differently colored or spotted seed surface is considered
+								discolored. Discoloration can occur on fully or partially filled
+								or empty grains.<br> <br>There are two types of
+								discoloration on rice seeds:<br> 1. Spotting, which is
+								caused by certain diseases (brown spot) or insects (rice bug
+								feeding damage)<br> 2. Discoloration on a portion or
+								portions of rice seeds can be caused by black kernel fungus,
+								stackburn disease, or sheath rot on certain occasions.<br>
+								3. Red Rice kernels are not acceptable in the rice market place.
+								Kernels should not have more than 25% of its surface area
+								colored red or red streaked
+							</font>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+
+		<div calss="viability_div" ng-if="viability_status=='true'">
+			<section class="breadcrumbs-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-offset-2 col-md-8">
+							<font size="4.5" color="black"> The viability of seed in
+								the field is determined by its germination potential, vigor, and
+								moisture level. The rate of germination is an indicator of
+								vigor.Rapid seed germination increases the chance that seed will
+								establish well in the field.<br>Seed vigor refers to the
+								seed’s level of activity and performance during germination and
+								seedling emergence. The ability of the germinating seed to
+								continue to grow and survive is important in crop
+								establishment.Seeds that are low in vigor generally produce weak
+								seedlings that are susceptible to environmental stresses. On the
+								other hand, seeds that are high in vigor produce early and
+								uniform stand, which gives them a competitive advantage against
+								environmental stresses.<br> High quality seeds are free
+								from weed seeds, seed-borne diseases, insects, pathogens, and
+								other extraneous matter. They should also be free from various
+								types of mechanical injury that reduce germination and seedling
+								vigor.
+							</font>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<div calss="moisture_div" ng-if="moisture_status=='true'">
+			<section class="breadcrumbs-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-offset-2 col-md-8">
+							<font size="4.5" color="black"> Moisture content is the
+								amount of water in the grain.<br> It influences the life
+								and vigor of the seed. The amount of moisture should be less
+								than 14%, and preferably less than 12% for extended storage
+								times.
+							</font>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+
+
+
+
+
+		<!-- ----------------------------------------------Seed Page close-------------------------------------------- -->
+
+		<!-- ----------------------------------------------Fertilizer Page-------------------------------------------- -->
+
+		<div id="Fertilizer_div" ng-if="fertilizer_status=='true'">
+			<section class="breadcrumbs-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<h2>Fertilizers</h2>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+								<li>
+								<li class="breadcrumb-item active">Fertilizer</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class=" col-sm-offset-2 col-md-8 text-justify">
+				<h3 class="cropdetail">
+					<b>What is meant by fertilizer?</b>
+				</h3>
+				<font size="4.5" color="black">Fertilizers are chemical
+					substances supplied to the crops to increase their productivity.
+					These are used by the farmers daily to increase the crop yield. The
+					fertilizers contain the essential nutrients required by the plants,
+					including nitrogen, potassium, and phosphorus. They enhance the
+					water retention capacity of the soil and also increase its
+					fertility </font> <img alt="" src="/IMG/fertilizer.jpg" height=300
+					width=500 class="image">
+
+				<h3 class="cropdetail">
+					<b>Importance of fertilizer</b>
+				</h3>
+				<font size="4.5" color="black"> It is very difficult to meet
+					the demands of the increasing population with such fewer resources.
+					Loss of soil fertility, pests, and lack of nutrients has resulted
+					in a decrease in agricultural production. This has increased the
+					importance of fertilizers in agriculture.<br> Fertilizers can
+					be important to the plants in the following ways:
+					<ul>
+						<li>Fertilizers increase plants’ tolerance towards pests.
+							This has reduced their reliance on insecticides and herbicides,
+							thereby, producing healthier crops. Consequently, diseases have
+							reduced, providing aesthetic value to the crops.</li>
+						<li>Fertilizers improve the water holding capacity of the
+							plants and increase root depth.</li>
+						<li>The potassium content present in the fertilizers
+							strengthens the straws and stalks of the plants.</li>
+						<li>The phosphorus present in the fertilizers helps in the
+							faster development of roots and formation of seeds in the plants.</li>
+						<li>Nitrogen in the fertilizers enhances the growth of the
+							plants which can be characterized by the green colour of the
+							plants</li>
+					</ul>
 				</font>
-				<h2>How to ensure seed quality</h2>
-				<font size="4.5" color="black">Seed is the foundation of any
-					crop. It must be grown, harvested, and processed correctly for best
-					yield and quality results. Sowing good quality seeds leads to lower
-					seed rate, better emergence (>70%), more uniformity, less
-					replanting, and vigorous early growth which helps to increase
-					resistance to insects and diseases, and decrease weeds. As a
-					result, yield can increase by 5−20%.</font> <br>
-				<button type="link" class="btn" ng-click="purity_page()"
-					style="background-color: white; border-color: white; font-size: 20px;">Varietal
-					purity</button>
-				<button type="link" class="btn" ng-click="viability_page()"
-					style="background-color: white; border-color: white; font-size: 20px;">Seed
-					viability</button>
-				<button type="link" class="btn" ng-click="moisture_page()"
-					style="background-color: white; border-color: white; font-size: 20px;">Moisture
-					content</button>
 
-			</div>
-		</section>
-	</div>
+				<h3 class="cropdetail">
+					<b>Types of fertilizer</b>
+				</h3>
+				<font size="4.5" color="black">
+					<ul>
+						<li><h4><b>Inorganic Fertilizers</b></h4> Inorganic
+							fertilizers are chemical fertilizers that contain nutrient
+							elements for the growth of crops made by chemical means. The
+							inorganic fertilizers are of the following types:<br>
+							<u>Nitrogen Fertilizers</u><br> Nitrogen fertilizers contain
+							nitrogen necessary for the development of crops. Nitrogen is the
+							main constituent of chlorophyll that maintains a balance in the
+							process of photosynthesis. It is also a part of amino acids in
+							plants and constitutes protein. Nitrogen fertilizers improve the
+							production and quality of agricultural products.<br>
+							<u>Phosphorus Fertilizer</u><br> The main nutrient in a phosphorus
+							fertilizer is phosphorus. The efficiency of fertilizer depends
+							upon effective phosphorus content, methods of fertilizing,
+							properties of soil and crop strains. Phosphorus found in the
+							protoplasm of the cell plays an important role in cell growth and
+							proliferation. The phosphorus fertilizer is beneficial for the
+							growth of roots of the plants.</li>
+						<li><h4><b>Organic Fertilizers</b></h4>Organic fertilizers are natural fertilizers obtained from
+							plants and animals. It enriches the soil with carbonic compounds
+							essential for plant growth. Organic fertilizers increase the
+							organic matter content of the soil, promotes the reproduction of
+							microorganisms, and changes the physical and chemical properties
+							of the soil. It is considered to be one of the main nutrients for
+							green food.<br> Organic fertilizers can be obtained from the
+							following products:
+							<ul><li> Agricultural Waste</li>
+							<li> Livestock Manure</li>
+							<li>Industrial Waste</li> 
+							<li>Municipal Sludge</li></ul></li>
+					</ul>
+				</font>
+			</section>
+		</div>
 
+		<!-- ----------------------------------------------Fertilizer Page Close-------------------------------------- -->
 
-	<div class="purity_div col-md-10 col-md-offset-1"
-		ng-if="purity_status=='true'">
-		<section class="breadcrumbs-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 col-md-offset-1">
-						<font size="4.5" color="black">To determine the genetic
-							purity status of a given seed lot of the notified cultivar /
-							hybrid and the extent to which the sample in question conforms to
-							the prescribed standards.</font>
-						<h2>Seed lot purity</h2>
-						<font size="4.5" color="black"> Impurities refer to the
-							degree of contamination caused by (1) weed seeds, (2) seeds of
-							other crops or species, and (3) inert material such as stones,
-							dirt, or twigs. It is expressed as a percentage, by weight<br>
-							To measure seed lot purity:<br> 1. Randomly select a seed
-							sample. 100 g is a good sample size.<br> 2. Weigh the
-							sample. [A]<br> 3. Remove all of the weed and other crop
-							seeds.<br> 4. Weigh the removed weed and other crop seed
-							matter. [B]<br> 5. Compute the weed percentage using the
-							following formula:<br> <img alt="" src="IMG/weed.png"><br>
-							6. Weigh the inert matter removed from the sample [C], the inert
-							matter percentage is calculated using the formula: <img alt=""
-							src="IMG/Inert_matter.png">
-						</font>
+		<!-- ----------------------------------------------Pesticide Page-------------------------------------------- -->
 
-						<h2>Germination Percentage</h2>
-						<font size="4.5" color="black"> Germination percentage
-							expresses the proportion of the total number of seeds that are
-							alive. Good seeds have more than 80% germination rate.Many
-							varieties have a dormancy period immediately after harvest. When
-							stored under traditional open systems, the germination rate of
-							most rice seed begins to deteriorate rapidly after 6 months.<br>
-							<br>To test seed germination:<br> 1. Select a number of
-							small random samples from the seed to be planted and select a
-							subset (e.g., 200 seeds) of the combined sample. Soak the seed in
-							water for 24 hours.<br> 2. Arrange 100 soaked seeds in a
-							grid pattern on a wet paper towel.<br> Place the paper in a
-							closed container or<br> Cover the seeds with another moist
-							paper towel and roll together and place the sample in a plastic
-							bag<br> 3. Ensure paper remains moist (but not wet to the
-							point of water running off – or seed will rot).<br> 4. Count
-							the germinated seeds 3 and 5 days later and record how many have
-							germinated.<br> 5. Compute the germination percentage using
-							the following formula: <img alt="" src="IMG/germination.png"><br>At
-							least 80 seeds should have germinated to be considered "good
-							seed" (80% germination).
-						</font>
-
-						<h2>Discoloration</h2>
-						<font size="4.5" color="black"> Fungi, bacteria, and
-							environmental conditions such as high humidity and temperature
-							(i.e. 27−35°) cause discoloration. Other rice diseases do not
-							produce consistent discoloration. Any seed having more than 0.5%
-							differently colored or spotted seed surface is considered
-							discolored. Discoloration can occur on fully or partially filled
-							or empty grains.<br> <br>There are two types of
-							discoloration on rice seeds:<br> 1. Spotting, which is
-							caused by certain diseases (brown spot) or insects (rice bug
-							feeding damage)<br> 2. Discoloration on a portion or
-							portions of rice seeds can be caused by black kernel fungus,
-							stackburn disease, or sheath rot on certain occasions.<br>
-							3. Red Rice kernels are not acceptable in the rice market place.
-							Kernels should not have more than 25% of its surface area colored
-							red or red streaked
-						</font>
+		<div id="Pesticide_div" ng-if="pesticide_status=='true'">
+			<section class="breadcrumbs-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<h2>Pesticides</h2>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+								<li>
+								<li class="breadcrumb-item active">Pesticide</li>
+							</ol>
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-	</div>
+			</section>
+			<section class=" col-sm-offset-2 col-md-8 text-justify">
+				<h3 class="cropdetail">
+					<b>What is meant by pesticides?</b>
+				</h3>
+				<font size="4.5" color="black"> Pesticides are chemical
+					substances that are meant to kill pests. In general, a pesticide is
+					a chemical or a biological agent such as a virus, bacterium,
+					antimicrobial, or disinfectant that deters, incapacitates, kills,
+					pests.<br> This use of pesticides is so common that the term
+					pesticide is often treated as synonymous with plant protection
+					product. It is commonly used to eliminate or control a variety of
+					agricultural pests that can damage crops and livestock and reduce
+					farm productivity. The most commonly applied pesticides are
+					insecticides to kill insects, herbicides to kill weeds,
+					rodenticides to kill rodents, and fungicides to control fungi,
+					mold, and mildew.<br>
+				</font> <img alt="" src="/IMG/pesticide.jpg" height=450 width=700
+					class="image">
 
+				<h3 class="cropdetail">
+					<b>Importance of Pesticides</b>
+				</h3>
+				<font size="4.5" color="black">Pesticides are important. They
+					help farmers grow more food on less land by protecting crops from
+					pests, diseases and weeds as well as raising productivity per
+					hectare. Production of major crops has more than tripled since
+					1960, thanks in large part to pesticides.<br> For example,
+					rice – which feeds almost half the people on our planet – has more
+					than doubled in production. The amount of wheat has increased
+					nearly 160 percent.<br>All farmers use pesticides, including
+					organic farmers. Whether from synthetic or natural sources,
+					pesticides are used by all farmers. The difference is organic
+					farmers can only use pesticides from natural sources. But both
+					synthetic and natural pesticides have various levels of toxicity. <br>
+					Without pesticides, more than half of our crops would be lost to
+					pests and diseases. Between 26 and 40 percent of the world’s
+					potential crop production is lost annually because of weeds, pests
+					and diseases. Without crop protection, these losses could easily
+					double.
+				</font>
 
-	<div calss="viability_div" ng-if="viability_status=='true'">
-		<section class="breadcrumbs-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1">
-						<font size="4.5" color="black"> The viability of seed in
-							the field is determined by its germination potential, vigor, and
-							moisture level. The rate of germination is an indicator of
-							vigor.Rapid seed germination increases the chance that seed will
-							establish well in the field.<br>Seed vigor refers to the
-							seed’s level of activity and performance during germination and
-							seedling emergence. The ability of the germinating seed to
-							continue to grow and survive is important in crop
-							establishment.Seeds that are low in vigor generally produce weak
-							seedlings that are susceptible to environmental stresses. On the
-							other hand, seeds that are high in vigor produce early and
-							uniform stand, which gives them a competitive advantage against
-							environmental stresses.<br> High quality seeds are free from
-							weed seeds, seed-borne diseases, insects, pathogens, and other
-							extraneous matter. They should also be free from various types of
-							mechanical injury that reduce germination and seedling vigor.
-						</font>
+				<h3 class="cropdetail">
+					<b>Types of Pesticides</b>
+				</h3>
+				<font size="4.5" color="black">
+					<ul>
+						<li>Algaecides to kill and/or slowing the growth of algae.</li>
+						<li>Antimicrobials to control germs and microbes such as
+							bacteria and viruses.</li>
+						<li>Disinfectants to control germs and microbes such as
+							bacteria and viruses.</li>
+						<li>Fungicides to control fungal problems like molds, mildew,
+							and rust.</li>
+						<li>Herbicides to kill or inhibit the growth of unwanted
+							plants, also known as weeds.</li>
+						<li>Insecticides to control insects.</li>
+						<li>Insect Growth Regulators to disrupt the growth and
+							reproduction of insects.</li>
+						<li>Rodenticides to kills rodents like mice, rats, and
+							gophers.</li>
+						<li>Wood Preservatives to make wood resistant to insects,
+							fungus and other pests.</li>
+					</ul>
+				</font> <img alt="" src="/IMG/pesticidetype.png" height=450 width=500
+					class="image"><b><hr></b>
+			</section>
+		</div>
+
+		<!-- ----------------------------------------------Pesticide Page Close-------------------------------------- -->
+		
+		<!-- ----------------------------------------------Profile-- Page-------------------------------------------- -->
+		<div id="Profile_div" ng-if="profile_status=='true'">
+			<section class="breadcrumbs-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<h2>Profile</h2>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+								<li>
+								<li class="breadcrumb-item active">Profile</li>
+							</ol>
+						</div>
 					</div>
 				</div>
+			</section>
+			<section  class=" col-sm-offset-2 col-md-8 text-justify">
+			<div class="col-sm-offset-3 col-md-6" ng-repeat="profile in profiles">
+			<!--<div ng-repeat="profile in profiles" ng-change="userProfile(userid)">  -->
+			<div class="row">
+			<div class="col-md-6">
+			<label>First Name</label>			
 			</div>
-		</section>
-	</div>
-
-	<div calss="moisture_div" ng-if="moisture_status=='true'">
-		<section class="breadcrumbs-section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1">
-						<font size="4.5" color="black"> Moisture content is the
-							amount of water in the grain.<br> It influences the life and
-							vigor of the seed. The amount of moisture should be less than
-							14%, and preferably less than 12% for extended storage times.
-						</font>
-					</div>
-				</div>
+			<div class="col-md-6">
+			<p>{{profile.firstname}}</p>
+			</div></div>
+			
+			<div class="row">
+			<div class="col-md-6">
+			<label>Last Name</label>			
 			</div>
-		</section>
-	</div>
+			<div class="col-md-6">
+			<p>{{profile.lastname}}</p>
+			</div></div>
+			
+			<div class="row">
+			<div class="col-md-6">
+			<label>Email</label>			
+			</div>
+			<div class="col-md-6">
+			<p>{{profile.email}}</p>
+			</div></div>
+			
+			<div class="row">
+			<div class="col-md-6">
+			<label>Phone Number</label>			
+			</div>
+			<div class="col-md-6">
+			<p>{{profile.mobile}}</p>
+			</div></div>
+			
+			
+			</div>
+			</section>
+			</div>
+			
+   		<!-- ----------------------------------------------Profile Page Close----------------------------------------- -->
 
+		<!-- ------------------------------------------------Footer------------------------------------------------------>
 
-
-
-
-
-	<!-- ----------------------------------------------Seed Page close-------------------------------------------- -->
-
-	<!-- ------------------------------Forget password close ---------------------------------------->
-	<!-- ------------------------------------------------Footer------------------------------------------------------>
-
-	<footer class="full-footer col-md-12">
-		<div class="container top-footer">
-			<hr>
-			<div class="background-primary padding text-center">
-				<a style="color: black;" class="p-1" href="#"> <i
-					class="fa fa-2x fa-facebook-square"></i></a> <a style="color: black;"
-					class="p-1" href="#"> <i class="fa fa-2x fa-google-plus-square"></i></a>
-				<a style="color: black;" class="p-1" href="#"> <i
-					class="fa fa-2x fa-twitter-square"></i></a> <a style="color: black;"
-					class="p-1" href="#"> <i class="fa fa-2x fa-instagram"></i></a>
+		<footer class="full-footer col-md-12">
+			<div class="container top-footer">
 				<hr>
-			</div>
+				<div class="background-primary padding text-center">
+					<a style="color: black;" class="p-1" href="https://www.facebook.com/farmer.buddy.16"> <i
+						class="fa fa-2x fa-facebook-square"></i></a> <a style="color: black;"
+						class="p-1" href="https://www.gmail.com/farmers.buddyhelp@gmail.com"> <i
+						class="fa fa-2x fa-google-plus-square"></i></a> <a
+						style="color: black;" class="p-1" href="https://twitter.com/FarmerBuddy2?s=08"> <i
+						class="fa fa-2x fa-twitter-square"></i></a> <a style="color: black;"
+						class="p-1" href="https://www.instagram.com/invites/contact/?i=flct4vf2zh8v&utm_content=ibqo90i"> 
+						<i class="fa fa-2x fa-instagram"></i></a>
+					<hr>
+				</div>
 
-			<div class="col-md-4">
-				<img src="./IMG/farmer-buddy.jpg" width="50" height="50" /> <font
-					color="black" size="5">Farmer-Buddy</font>
-				<p>
-					Farmer-Buddy is a website which is <br> specially designed to
-					help our farmers<span id="dots">...</span><span id="more">
-						regarding the information they need such as<br> crops,
-						pesticides, fertilizers seeds, etc<br> Farmer must be
-						registered with our system<br> and should login to access our
-						services.
-					</span>
-				</p>
-				<button onclick="myFunction()" id="myBtn">Read more</button>
-				<script>
+				<div class="col-md-4">
+					<img src="./IMG/farmer-buddy.jpg" width="50" height="50" /> <font
+						color="black" size="5">Farmer-Buddy</font>
+					<p>
+						Farmer-Buddy is a website which is <br> specially designed to
+						help our farmers<span id="dots">...</span><span id="more">
+							regarding the information they need such as<br> crops,
+							pesticides, fertilizers seeds, etc<br> Farmer must be
+							registered with our system<br> and should login to access
+							our services.
+						</span>
+					</p>
+					<button onclick="myFunction()" id="myBtn">Read more</button>
+					
+					<script>
 						function myFunction() {
 							var dots = document.getElementById("dots");
 							var moreText = document.getElementById("more");
 							var btnText = document.getElementById("myBtn");
 
-							if (dots.style.display === "none") {
-								dots.style.display = "inline";
-								btnText.innerHTML = "Read more";
-								moreText.style.display = "none";
-							} else {
+							if (dots.style.display === "inline") {
 								dots.style.display = "none";
 								btnText.innerHTML = "Read less";
 								moreText.style.display = "inline";
+							} else {
+								dots.style.display = "inline";
+								btnText.innerHTML = "Read more";
+								moreText.style.display = "none";
 							}
 						}
 					</script>
-			</div>
+				</div>
 
-			<div class="col-md-4">
-				<font color="black" size="5">Related Links</font><br> <a
-					href="#">Crop Information</a><br> <a href="#">Pesticides
-					and fertilizers</a><br> <a href="#">Government Schemes</a><br>
-				<a href="#">Order </a>
-			</div>
-			<div class="col-md-4">
-				<font color="black" size="5">Contact us</font><br> <a
-					style="color: black;" class="p-1" href="#"><i
-					class="fa fa-map-marker-alt">Address:Block No:2,Karvenagar,
-						Pune-52.</i></a><br> <a style="color: black;" class="p-1"
-					href="mailto:abc@gmail.com"><i class="fa fa-envelope">Email:
-						farmers.buddyhelp@gmail.com</i></a><br> <a style="color: black;"
-					class="p-1" href="mailto:abc@gmail.com"><i class="fa fa-phone">Phone:(+91
-						7798839371)</i></a><br> <a style="color: black;" class="p-1"
-					href="mailto:abc@gmail.com"><i class="fa fa-twitter">Twitter</i></a><br>
-				<a style="color: black;" class="p-1" href="mailto:abc@gmail.com"><i
-					class="fa fa-facebook">Facebook</i></a>
-			</div>
-		</div>
-		<div class="container-fluid bottom-footer">
-			<div class="row">
-				<div class="col-12 text-center">
-					<p style="color: white;">Copyrights @ 2020 - All rights
-						reserved</p>
+				<div class="col-md-4">
+					<font color="black" size="5">Related Links</font><br> <a
+						href="https://pmksy.gov.in/">Prime Minister Krishi Sinchayee Yojana</a><br> 
+						<a href="https://pmfby.gov.in/">Pradhan Mantri Fasal Bima Yojana</a><br> 
+						<a href="https://www.enam.gov.in/web/">E-NAM (National Agriculture Market)</a><br>
+					<a href="https://nmsa.dac.gov.in/">National Mission For Sustainable Agriculture </a>
+				</div>
+				<div class="col-md-4">
+					<font color="black" size="5">Contact us</font><br> 
+					<a style="color: black;" class="p-1" href="#">
+					<i class="fa fa-map-marker-alt">Address:Block No:2,Karvenagar, Pune-52.</i></a><br> 
+					
+					<a style="color: black;" class="p-1" href="https://www.gmail.com/farmers.buddyhelp@gmail.com">
+					<i class="fa fa-envelope">Email:farmers.buddyhelp@gmail.com</i></a><br> 
+					
+					<a style="color: black;"class="p-1" href="mailto:abc@gmail.com">
+					<i class="fa fa-phone">Phone:(+917798839371)</i></a><br> 
+					
+					<a style="color: black;" class="p-1" href="https://twitter.com/FarmerBuddy2?s=08">
+					<i class="fa fa-twitter">Twitter</i></a><br>
+					
+					<a style="color: black;" class="p-1" href="https://www.facebook.com/farmer.buddy.16"><i
+						class="fa fa-facebook">Facebook</i></a>
 				</div>
 			</div>
-		</div>
-	</footer>
-	<!-- -------------------------------------Footer close------------------------------------------ -->
+			<div class="container-fluid bottom-footer">
+				<div class="row">
+					<div class="col-12 text-center">
+						<p style="color: white;">Copyrights @ 2020 - All rights
+							reserved</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- -------------------------------------------------Footer close------------------------------------------ -->
 
 
+	</div>
 	</div>
 </body>
 
@@ -1214,6 +1580,11 @@ p.date {
 		$scope.context_path = "http://localhost:2020";
 		$scope.cropdesc_status = "false";
 		$scope.cropid_desc = "";
+		$scope.fertilizer_status = "false";
+		$scope.pesticide_status = "false";
+		$scope.profile_status = "false";
+		$scope.home_status = "false";
+		$scope.userprofile_status = "false";
 
 		$scope.loginUser = function(uname, pwd) {
 			console.log("changename function called");
@@ -1312,6 +1683,10 @@ p.date {
 			$scope.viability_status = "false";
 			$scope.moisture_status = "false";
 			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
 		}
 		$scope.registration_page = function() {
 			$scope.welcome_status = "false";
@@ -1327,6 +1702,10 @@ p.date {
 			$scope.viability_status = "false";
 			$scope.moisture_status = "false";
 			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1354,6 +1733,10 @@ p.date {
 			$scope.viability_status = "false";
 			$scope.moisture_status = "false";
 			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1382,6 +1765,10 @@ p.date {
 			$scope.viability_status = "false";
 			$scope.moisture_status = "false";
 			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1410,6 +1797,10 @@ p.date {
 			$scope.viability_status = "false";
 			$scope.moisture_status = "false";
 			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1438,6 +1829,10 @@ p.date {
 			$scope.viability_status = "false";
 			$scope.moisture_status = "false";
 			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1466,6 +1861,10 @@ p.date {
 			$scope.viability_status = "false";
 			$scope.moisture_status = "false";
 			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1494,6 +1893,10 @@ p.date {
 			$scope.viability_status = "false";
 			$scope.moisture_status = "false";
 			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1522,6 +1925,10 @@ p.date {
 			$scope.viability_status = "true";
 			$scope.moisture_status = "false";
 			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1550,6 +1957,10 @@ p.date {
 			$scope.viability_status = "false";
 			$scope.moisture_status = "true";
 			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1564,14 +1975,49 @@ p.date {
 			console.log($scope.contact_status);
 		}
 		
+		$scope.profile_page = function(userid){
+			
+			$http.get(
+					$scope.context_path + "/user/profile?userid=" 
+							+ userid).then(function(response) {
+				$scope.profiles = response.data;
+				console.log($scope.profiles);
+				return angular.fromJson($scope.profiles);
+			});
+			
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "flase";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
+		}
+
 		$scope.cropdesc_page = function(cropid) {
-			$http.get($scope.context_path + "/crop/crop?cropid="+cropid).then(
-					function(response) {
+			$http.get($scope.context_path + "/crop/crop?cropid=" + cropid)
+					.then(function(response) {
 						$scope.cropid_desc = response.data;
 						console.log($scope.cropid_desc);
 						return angular.fromJson($scope.cropid_desc);
 					});
-			
+
+			$http.get($scope.context_path + "/crop/pesticide?cropid=" + cropid)
+			.then(function(response) {
+				$scope.pesticides = response.data;
+				console.log($scope.pesticides);
+				return angular.fromJson($scope.pesticides);
+			});
 			
 			$scope.welcome_status = "false";
 			$scope.login_status = "true";
@@ -1586,6 +2032,138 @@ p.date {
 			$scope.viability_status = "false";
 			$scope.moisture_status = "false";
 			$scope.cropdesc_status = "true";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+
+		$scope.fertilizer_page = function() {
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "flase";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "true";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+
+		$scope.pesticide_page = function() {
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "flase";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "true";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+
+		$scope.profile_page = function() {
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "flase";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "true";
+			$scope.home_status = "false";
+			console.log($scope.cropdesc_status);
+			console.log($scope.purity_status);
+			console.log($scope.viability_status);
+			console.log($scope.moisture_status);
+			console.log($scope.seed_status);
+			console.log($scope.forget_pass_status);
+			console.log($scope.crop_status);
+			console.log($scope.about_status);
+			console.log($scope.login_status);
+			console.log($scope.welcome_status);
+			console.log($scope.registration_status);
+			console.log($scope.contact_status);
+		}
+		
+		$scope.home_page = function() {
+			$scope.welcome_status = "true";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "flase";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1615,6 +2193,10 @@ p.date {
 			$scope.viability_status = "false";
 			$scope.moisture_status = "false";
 			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
 		}
 
 	});

@@ -48,6 +48,17 @@ public class Crop {
 	
 	@Column(name="irrigation")
 	private String irrigation;
+	
+	@Column(name="fertilizer")
+	private String fertilizer;
+
+	public String getFertilizer() {
+		return fertilizer;
+	}
+
+	public void setFertilizer(String fertilizer) {
+		this.fertilizer = fertilizer;
+	}
 
 	public String getCliMate() {
 		return cliMate;
