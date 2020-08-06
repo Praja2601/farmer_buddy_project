@@ -15,12 +15,13 @@ public class Pesticide{
 	@Id
     @GeneratedValue(strategy= GenerationType.AUTO,generator="native")
     @GenericGenerator(name = "native",strategy = "native")
+	@Column(name="pesticideid")
+    private int pesticideId;
 
 	@Column(name="cropid")
     private String cropId;
 	
-	@Column(name="pesticideid")
-    private int pesticideId;
+	
 	
 	@Column(name="disease")
     private String disease;
