@@ -157,6 +157,14 @@ p.date {
 #main.header {
 	display: none;
 }
+.loginpic{
+	width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+}
 </style>
 </head>
 
@@ -271,8 +279,7 @@ p.date {
 				ng-if="carousel_status=='false'" data-ride="carousel">
 				<!-- Indicators -->
 				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>q
-					q sx
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 					<li data-target="#myCarousel" data-slide-to="1"></li>
 					<li data-target="#myCarousel" data-slide-to="2"></li>
 					<li data-target="#myCarousel" data-slide-to="3"></li>
@@ -309,7 +316,7 @@ p.date {
 			</div>
 
 			<!-- ------------------------------------LOGIN FORM------------------------------------------------ -->
-			<div class="main col-sm-offset-3 col-md-6"
+			<div class="main col-sm-offset-4 col-md-4"
 				ng-if="login_status=='false'"
 				style="background-color: white; font-stretch: ultra-expanded; padding: 1px, 48px">
 				<div ng-repeat="rdetail in regdetail">
@@ -320,8 +327,8 @@ p.date {
 				</div>
 
 				<!--Div for login -->
-				<div id="Login_div">
-
+				<div id="Login_div" style="border:2px solid black; padding: 50px 10px;">
+					<img src="./IMG/login3.png" alt="login" class="loginpic">
 					<div class="text-center">
 						<h3>
 							<font color="black"> <b>USER LOGIN </b></font>
@@ -332,8 +339,9 @@ p.date {
 					<div class="form-group">
 						<label>Username</label> <input type="text" class="form-control"
 							id="uname" ng-model="uname" aria-describedby="unameHelp"
-							placeholder="Enter User Name"> <small id="unameHelp"
-							class="text-light bg-dark"> We'll never share your user
+							placeholder="Enter User Name" style="border-bottom: 1px solid #fff;  
+							height: 40px; color: #fff; font-size: 16px;"> <small id="unameHelp"
+							class="text-light bg-light"> We'll never share your user
 							name with anyone else. </small>
 
 					</div>
@@ -342,7 +350,8 @@ p.date {
 					<div class="form-group">
 						<label>Password</label> <input type="password"
 							class="form-control" id="pwd" ng-model="pwd"
-							placeholder="Password">
+							placeholder="Password" style=" border-bottom: 1px solid #fff;  
+							height: 40px; color: #fff; font-size: 16px;">
 					</div>
 
 
@@ -357,7 +366,7 @@ p.date {
 					<!-- login button -->
 					<div class="text-center">
 						<button type="submit" class="btn btn-success btn-block"
-							ng-click="loginUser(uname,pwd)">Login</button>
+							ng-click="loginUser(uname,pwd)" style="border: none; outline: none; height: 40px; background: green; color: #fff; font-size: 18px; border-radius: 20px;">Login</button>
 
 					</div>
 
@@ -366,13 +375,13 @@ p.date {
 							<label><br>Not registered yet? Click on Signup
 								button.</label>
 
-							<button type="submit" class="btn btn-primary btn-block"
+							<button type="submit" class="btn btn-primary btn-block" style="border: none; outline: none; height: 40px;  font-size: 18px; border-radius: 20px;"
 								ng-click="registration_page()">Sign up</button>
 
 						</div>
 					</div>
 
-				</div>
+				</div><br>
 			</div>
 
 			<!-- ------------------------------------------------Login page Page------------------------------------------- -->
