@@ -327,7 +327,7 @@ p.date {
 				</div>
 
 				<!--Div for login -->
-				<div id="Login_div" style="border:2px solid black; padding: 50px 10px;">
+				<div id="Login_div" style="border:2px solid black; padding: 50px 10px; background-image: url('/IMG/background.jpg');">
 					<img src="./IMG/login3.png" alt="login" class="loginpic">
 					<div class="text-center">
 						<h3>
@@ -351,7 +351,7 @@ p.date {
 						<label>Password</label> <input type="password"
 							class="form-control" id="pwd" ng-model="pwd"
 							placeholder="Password" style=" border-bottom: 1px solid #fff;  
-							height: 40px; color: #fff; font-size: 16px;">
+							height: 40px; font-size: 16px;">
 					</div>
 
 
@@ -608,7 +608,9 @@ p.date {
 							<div class="col-12">
 								<h2>Contact Us</h2>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+									<li class="breadcrumb-item"><button type="submit"
+								style="color: black; background-color: white; border-color: white;"
+								class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">Contact Us</li>
 								</ol>
@@ -765,7 +767,9 @@ p.date {
 							<div class="col-12">
 								<h2>About Us</h2>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+									<li class="breadcrumb-item"><button type="submit"
+								style="color: black; background-color: white; border-color: white;"
+								class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">About Us</li>
 								</ol>
@@ -828,7 +832,7 @@ p.date {
 									necessary information needed for farming.</font><br>
 							</div>
 						</div>
-					</div>
+					</div><br>
 				</section>
 			</div>
 
@@ -888,7 +892,9 @@ p.date {
 							<div class="col-12">
 								<h2>Crop</h2>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+									<li class="breadcrumb-item"><button type="submit"
+								style="color: black; background-color: white; border-color: white;"
+								class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">Crop</li>
 								</ol>
@@ -964,7 +970,9 @@ p.date {
 							<div class="col-12">
 								<h2>Crop Description</h2>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+									<li class="breadcrumb-item"><button type="submit"
+								style="color: black; background-color: white; border-color: white;"
+								class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">CropDesc</li>
 								</ol>
@@ -1073,7 +1081,9 @@ p.date {
 							<div class="col-12">
 								<h2>Seed</h2>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+									<li class="breadcrumb-item"><button type="submit"
+								style="color: black; background-color: white; border-color: white;"
+								class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">Seed</li>
 								</ol>
@@ -1256,7 +1266,9 @@ p.date {
 							<div class="col-12">
 								<h2>Fertilizers</h2>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+									<li class="breadcrumb-item"><button type="submit"
+								style="color: black; background-color: white; border-color: white;"
+								class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">Fertilizer</li>
 								</ol>
@@ -1359,7 +1371,9 @@ p.date {
 							<div class="col-12">
 								<h2>Pesticides</h2>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+									<li class="breadcrumb-item"><button type="submit"
+								style="color: black; background-color: white; border-color: white;"
+								class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">Pesticide</li>
 								</ol>
@@ -1445,7 +1459,9 @@ p.date {
 							<div class="col-12">
 								<h2>Profile</h2>
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="farmer-buddy.html">Home</a>
+									<li class="breadcrumb-item"><button type="submit"
+								style="color: black; background-color: white; border-color: white;"
+								class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">Profile</li>
 								</ol>
@@ -2033,7 +2049,7 @@ p.date {
 		}
 
 		$scope.profile_page = function(userid) {
-alert(userid);
+//alert(userid);
 			$http.get($scope.context_path + "/user/profile?userid=" + userid)
 					.then(function(response) {
 						$scope.profiles = response.data;
