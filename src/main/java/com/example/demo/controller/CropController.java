@@ -3,17 +3,13 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.Crop;
 import com.example.demo.model.CropType;
 import com.example.demo.model.District;
@@ -23,9 +19,8 @@ import com.example.demo.repo.CropTypeRepository;
 import com.example.demo.repo.DistrictRepository;
 import com.example.demo.repo.PesticideRepository;
 
-
-@Component
-@Path("/crop")
+@RestController
+@RequestMapping("/crop")
 public class CropController {
 	
 	@Autowired
@@ -40,9 +35,8 @@ public class CropController {
 	@Autowired
 	PesticideRepository pesticideRepository;
 	
-	@GET
-	@Path("/getAllDistricts")
-	@Produces("text/html")
+	
+	@RequestMapping(value="/getAllDistricts", method=RequestMethod.GET,produces = "text/html")
 	public String getAllDistricts()
 	{
 		List <District> districts =districtRepository.findAll();
@@ -76,14 +70,12 @@ public class CropController {
 			districtArray.put(districtObject);
 		}
 		return districtArray.toString();
-		//return districtId+" "+ dt.getDistrictName();
-		
+	
 	}
 	
-	@GET
-	@Path("/croptypes")
-	@Produces("text/html")
-	public String test(@QueryParam ("croptypeids") String cropTypeIds)
+	
+	@RequestMapping(value="/croptypes", method=RequestMethod.GET,produces = "text/html")
+	public String test(@RequestParam (name="croptypeids") String cropTypeIds)
 	{
 		JSONArray cropTypeArray = new JSONArray();
 		JSONObject cropTypeObject = null;
@@ -123,10 +115,9 @@ public class CropController {
 		//return districtId+" "+dt.getDistrictName()+" "+dt.getCropTypeIds();
 	}
 	
-	@GET
-	@Path("/crops")
-	@Produces("text/html")
-	public String getCropsDetails(@QueryParam ("croptypeid") String cropTypeId)
+	
+	@RequestMapping(value="/crops", method=RequestMethod.GET,produces = "text/html")
+	public String getCropsDetails(@RequestParam (name="croptypeid") String cropTypeId)
 	{
 		JSONArray cropArray = new JSONArray();
 		JSONObject cropObject = null;
@@ -176,10 +167,8 @@ public class CropController {
 		return cropArray.toString();
 	}
 	
-	@GET
-	@Path("/crop")
-	@Produces("text/html")
-	public String getCropDetail(@QueryParam ("cropid") int cropId)
+	@RequestMapping(value="/crop", method=RequestMethod.GET,produces = "text/html")
+	public String getCropDetail(@RequestParam (name="cropid") int cropId)
 	{
 		JSONArray cropdescArray = new JSONArray();
 		JSONObject cropdescObject = null;
@@ -212,10 +201,9 @@ public class CropController {
 			
 	}
 	
-	@GET
-	@Path("/pesticide")
-	@Produces("text/html")
-	public String getPesticide(@QueryParam ("cropid") String cropId)
+	
+	@RequestMapping(value="/pesticide", method=RequestMethod.GET,produces = "text/html")
+	public String getPesticide(@RequestParam (name="cropid") String cropId)
 	{
 		JSONArray pesticideArray = new JSONArray();
 		JSONObject pesticideObject = null;
@@ -252,11 +240,5 @@ public class CropController {
 		}
 		
 		return pesticideArray.toString();
-	}
-	
-	
-	public static  void main(String args[])
-	{
-		
 	}
 }

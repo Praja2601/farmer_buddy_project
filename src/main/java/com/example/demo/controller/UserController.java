@@ -2,20 +2,17 @@ package com.example.demo.controller;
 
 import java.util.List;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.ContactDetail;
-import com.example.demo.model.Crop;
 import com.example.demo.model.User;
 import com.example.demo.model.UserDetail;
 import com.example.demo.repo.ContactUsRepository;
@@ -24,11 +21,8 @@ import com.example.demo.repo.UserDetailRepository;
 import com.example.demo.repo.UserRepository;
 import com.example.demo.service.utility.UserUtility;
 
-
-
-@Component
-@Path("/user")
-
+@RestController
+@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
@@ -40,21 +34,18 @@ public class UserController {
 	@Autowired
 	ContactUsRepository contactusRepository;
 	
-	@Path("/login")
-	@Produces("applications/json")
-	@GET
-	public String loginUser(@QueryParam ("uname") String userName,
-            @QueryParam("pwd") String password)
+	@RequestMapping(value="/login", method=RequestMethod.GET,produces = "text/html")
+	public String loginUser(@RequestParam (name="uname") String userName,
+            @RequestParam(name="pwd") String password)
 	{
 		System.out.println("Username:"+ userName + " Password:"+ password);
 		
 		return new UserUtility().loginUtility(userName, password,userRepository);
 	}
 	
-	@GET
-	@Path("/profile")
-	@Produces("text/html")
-	public String profile(@QueryParam ("userid") int userId)
+	
+	@RequestMapping(value="/profile", method=RequestMethod.GET,produces = "text/html")
+	public String profile(@RequestParam ("userid") int userId)
 	{
 		JSONArray userprofileArray = new JSONArray();
 		JSONObject userprofileObject = null;
@@ -80,15 +71,15 @@ public class UserController {
 		return userprofileArray.toString();			
 	}
 	
-	@Path("/create")
-	@GET
-	@Produces("application/json")
-	public String createUser(@QueryParam ("firstname") String firstName,
-            @QueryParam("lastname") String lastName,
-			@QueryParam("username") String userName,
-			@QueryParam("pwd") String password,
-			@QueryParam("email") String eMail,
-			@QueryParam("mobile") String mobile)
+	
+	@RequestMapping(value="/create", method=RequestMethod.GET,produces = "text/html")
+	public String createUser(
+			@RequestParam (name="firstname") String firstName,
+            @RequestParam(name="lastname") String lastName,
+			@RequestParam(name="username") String userName,
+			@RequestParam(name="pwd") String password,
+			@RequestParam(name="email") String eMail,
+			@RequestParam(name="mobile") String mobile)
 	{
 		System.out.println(
 				"Firstname:"+ firstName +
@@ -143,15 +134,15 @@ public class UserController {
 	
 	
 	
-	@Path("/contact")
-	@GET
-	@Produces("application/json")
-	public ContactDetail contactus(@QueryParam ("fullname") String fullName,
-            @QueryParam("email") String eMail,
-			@QueryParam("mobile") String mobile,
-			@QueryParam("district") String district,
-			@QueryParam("subject") String subject,
-			@QueryParam("description") String description)
+	
+	@RequestMapping(value="/contact", method=RequestMethod.GET,produces = "text/html")
+	public ContactDetail contactus(
+			@RequestParam (name="fullname") String fullName,
+            @RequestParam(name="email") String eMail,
+			@RequestParam(name="mobile") String mobile,
+			@RequestParam(name="district") String district,
+			@RequestParam(name="subject") String subject,
+			@RequestParam(name="description") String description)
 	{
 		System.out.println(
 				"Fullname:"+ fullName +
@@ -171,24 +162,6 @@ public class UserController {
 		contactdetail.setDescription(description);
 		
 		return contactusRepository.save(contactdetail);
-	}
-
-	
-	@GET
-    @Produces("application/json")
-    @Path("/getAllUsers")
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
-	@GET
-    @Produces("application/json")
-	@Path("/fetch/{id}")
-	public ResponseEntity<User> getUserById(@PathParam(value = "id") int userId) throws ResourceNotFoundException {
-		  User user = userRepository.findById(userId)
-		    .orElseThrow(() -> new ResourceNotFoundException("User not found :: " + userId));
-		  return ResponseEntity.ok().body(user);
-		 }
-
-	
+	}	
 }
 
