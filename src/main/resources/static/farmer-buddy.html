@@ -591,9 +591,9 @@ p.date {
 					</div>
 				</div>
 				<div ng-if="detail.status=='notok'">
-				 Invalid Username or password! Try again !
-					
-  					
+					Invalid Username or password! Try again !
+
+
 
 					<div id="myModal" class="modal fade" role="dialog">
 						<div class="modal-dialog">
@@ -676,43 +676,13 @@ p.date {
 											<input type="number" class="form-control"
 												placeholder="Mobile Number" ng-model="mobile">
 										</div>
-										<div class="form-group col-md-6">
+										<div class="form-group col-md-6" ng-init="populateDistricts()">
 											<select class="form-control" name="" id=""
 												ng-model="district">
 												<option selected>District</option>
-												<option value="Ahmednagar">Ahmednagar</option>
-												<option value="Akola">Akola</option>
-												<option value="Amravati">Amravati</option>
-												<option value="Aurangabad">Aurangabad</option>
-												<option value="Bhandara">Bhandara</option>
-												<option value="Beed">Beed</option>
-												<option value="Buldhana">Buldhana</option>
-												<option value="Chandrapur">Chandrapur</option>
-												<option value="Dhule">Dhule</option>
-												<option value="Gadchiroli">Gadchiroli</option>
-												<option value="Gondia">Gondia</option>
-												<option value="Hingoli">Hingolir</option>
-												<option value="Jalgaon">Jalgaon</option>
-												<option value="Jalana">Jalana</option>
-												<option value="Kolhapur">Kolhapur</option>
-												<option value="Latur">Latur</option>
-												<option value="Mumbai">Mumbai</option>
-												<option value="Nanded">Nanded</option>
-												<option value="Nandurbar">Nandurbar</option>
-												<option value="Nasik">Nashik</option>
-												<option value="Osmanabad">Osmanabad</option>
-												<option value="Parbhani">Parbhani</option>
-												<option value="Pune">Pune</option>
-												<option value="Raigarh">Raigarh</option>
-												<option value="Ratnagiri">Ratnagiri</option>
-												<option value="Sangali">Sangali</option>
-												<option value="Satara">Satarar</option>
-												<option value="Sindhudurg">Sindhudurg</option>
-												<option value="Solapur">Solapur</option>
-												<option value="Thane">Thane</option>
-												<option value="Wardha">Wardha</option>
-												<option value="Washim">Washim</option>
-												<option value="Yawatmal">Yawatmal</option>
+												<option ng-repeat="district in districts"
+													value="{{district.croptypeids}}">
+													{{district.districtname}}</option>
 											</select>
 										</div>
 									</div>
@@ -1084,7 +1054,8 @@ p.date {
 
 				<div class="col-sm-offset-3 col-md-6">
 					<button type="submit" class="btn btn-success"
-						ng-click="home_page()"home_page()"
+						ng-click="home_page()"
+						home_page()"
 						style="position: absolute; left: 0; bottom: 0;">
 						<i class="fa fa-chevron-left"></i>Back To Home
 					</button>
