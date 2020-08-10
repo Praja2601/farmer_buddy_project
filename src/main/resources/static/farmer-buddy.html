@@ -157,13 +157,14 @@ p.date {
 #main.header {
 	display: none;
 }
-.loginpic{
+
+.loginpic {
 	width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  position: absolute;
-  top: -50px;
-  left: calc(50% - 50px);
+	height: 100px;
+	border-radius: 50%;
+	position: absolute;
+	top: -50px;
+	left: calc(50% - 50px);
 }
 </style>
 </head>
@@ -277,6 +278,17 @@ p.date {
 			<!------------------------------  Carousel Implementation------------------------------------->
 			<div id="myCarousel" class="jumbotron col-md-12 carousel slide"
 				ng-if="carousel_status=='false'" data-ride="carousel">
+				<marquee width="100%" direction="left" vspace="2px" hspace="2px"
+					scrollamount="10">
+					<font family="Times New Roman" color="black" size=4><i>
+							"The ultimate goal of farming is not the growing of crops, but
+							the cultivation and perfection of human beings." - Masanobu
+							Fukuoka. "Agriculture is our wisest pursuit, because it will in
+							the end contribute most to real wealth, good morals, and
+							happiness." – Thomas Jefferson. “Agriculture was the first
+							occupation of man, and as it embraces the whole earth, it is the
+							foundation of all other industries.” – Edward W. Stewart </i> </font>
+				</marquee>
 				<!-- Indicators -->
 				<ol class="carousel-indicators">
 					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -327,7 +339,8 @@ p.date {
 				</div>
 
 				<!--Div for login -->
-				<div id="Login_div" style="border:2px solid black; padding: 50px 10px; background-image: url('/IMG/background.jpg');">
+				<div id="Login_div"
+					style="border: 2px solid black; padding: 50px 10px; background-image: url('/IMG/background.jpg');">
 					<img src="./IMG/login3.png" alt="login" class="loginpic">
 					<div class="text-center">
 						<h3>
@@ -339,10 +352,10 @@ p.date {
 					<div class="form-group">
 						<label>Username</label> <input type="text" class="form-control"
 							id="uname" ng-model="uname" aria-describedby="unameHelp"
-							placeholder="Enter User Name" style="border-bottom: 1px solid #fff;  
-							height: 40px; font-size: 16px;"> <small id="unameHelp"
-							class="text-light bg-light"> We'll never share your user
-							name with anyone else. </small>
+							placeholder="Enter User Name"
+							style="border-bottom: 1px solid #fff; height: 40px; font-size: 16px;">
+						<small id="unameHelp" class="text-light bg-light"> We'll
+							never share your user name with anyone else. </small>
 
 					</div>
 
@@ -350,8 +363,8 @@ p.date {
 					<div class="form-group">
 						<label>Password</label> <input type="password"
 							class="form-control" id="pwd" ng-model="pwd"
-							placeholder="Password" style=" border-bottom: 1px solid #fff;  
-							height: 40px; font-size: 16px;">
+							placeholder="Password"
+							style="border-bottom: 1px solid #fff; height: 40px; font-size: 16px;">
 					</div>
 
 
@@ -366,7 +379,8 @@ p.date {
 					<!-- login button -->
 					<div class="text-center">
 						<button type="submit" class="btn btn-success btn-block"
-							ng-click="loginUser(uname,pwd)" style="border: none; outline: none; height: 40px; background: green; color: #fff; font-size: 18px; border-radius: 20px;">Login</button>
+							ng-click="loginUser(uname,pwd)"
+							style="border: none; outline: none; height: 40px; background: green; color: #fff; font-size: 18px; border-radius: 20px;">Login</button>
 
 					</div>
 
@@ -375,13 +389,15 @@ p.date {
 							<label><br>Not registered yet? Click on Signup
 								button.</label>
 
-							<button type="submit" class="btn btn-primary btn-block" style="border: none; outline: none; height: 40px;  font-size: 18px; border-radius: 20px;"
+							<button type="submit" class="btn btn-primary btn-block"
+								style="border: none; outline: none; height: 40px; font-size: 18px; border-radius: 20px;"
 								ng-click="registration_page()">Sign up</button>
 
 						</div>
 					</div>
 
-				</div><br>
+				</div>
+				<br>
 			</div>
 
 			<!-- ------------------------------------------------Login page Page------------------------------------------- -->
@@ -393,67 +409,69 @@ p.date {
 
 
 			<!-- ----------------------------------------------Header--------------------------------------------------------->
-			<header class="header">
-				<div class="p-1" id="topHeader">
-					<div class="container">
-						<div class="row">
-							<div class="col-12 text-right">
-								<a class="p-1" href="tel:+917798839371"><i
-									class="fa fa-phone">7798839371</i></a> <a class="p-1"
-									href="mailto:farmers.buddyhelp@gmail.com"><i
-									class="fa fa-envelope">farmers.buddyhelp@gmail.com</i></a>
+			<div id="Header_div" ng-if="header_status=='true'">
+				<header class="header">
+					<div class="p-1" id="topHeader">
+						<div class="container">
+							<div class="row">
+								<div class="col-12 text-right">
+									<a class="p-1" href="tel:+917798839371"><i
+										class="fa fa-phone">7798839371</i></a> <a class="p-1"
+										href="mailto:farmers.buddyhelp@gmail.com"><i
+										class="fa fa-envelope">farmers.buddyhelp@gmail.com</i></a>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div id="bottomHeader">
-					<div class="container-fluid">
-						<nav class="navbar navbar-dark navbar-expand-md"
-							style="background-color: Orange;">
-							<button type="submit"
-								style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
-								class="btn btn-warning" ng-click="home_page()">Home</button>
-							<div class="dropdown">
+					<div id="bottomHeader">
+						<div class="container-fluid">
+							<nav class="navbar navbar-dark navbar-expand-md"
+								style="background-color: Orange;">
 								<button type="submit"
 									style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
-									class="btn btn-warning" data-toggle="dropdown">
-									Services <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
+									class="btn btn-warning" ng-click="home_page()">Home</button>
+								<div class="dropdown">
 									<button type="submit"
-										style="color: black; padding: 17px 16px; border-color: white; background-color: white;"
-										class="btn btn-success" ng-click="crop_page()">Crop</button>
-									<button type="submit"
-										style="color: black; padding: 17px 16px; border-color: white; background-color: white;"
-										class="btn btn-success" style="background-color: #FAD7A0;"
-										ng-click="fertilizer_page()">Fertilizers</button>
-									<button type="submit"
-										style="color: black; border-color: white; background-color: white; padding: 17px 16px;"
-										class="btn btn-success" ng-click="pesticide_page()">Pesticides</button>
-									<button type="submit"
-										style="color: black; border-color: white; background-color: white; padding: 17px 16px;"
-										class="btn btn-success" ng-click="seed_page()">Seed</button>
-								</ul>
-							</div>
-							<button type="submit"
-								style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
-								class="btn btn-success" style="background-color: #FAD7A0;"
-								ng-click="profile_page(userid)">Profile</button>
-							<button type="submit"
-								style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
-								class="btn btn-success" style="background-color: #FAD7A0;"
-								ng-click="about_page()">About</button>
-							<button type="submit"
-								style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
-								class="btn btn-success" ng-click="contact_page()">Contact</button>
+										style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
+										class="btn btn-warning" data-toggle="dropdown">
+										Services <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<button type="submit"
+											style="color: black; padding: 17px 16px; border-color: white; background-color: white;"
+											class="btn btn-success" ng-click="crop_page()">Crop</button>
+										<button type="submit"
+											style="color: black; padding: 17px 16px; border-color: white; background-color: white;"
+											class="btn btn-success" style="background-color: #FAD7A0;"
+											ng-click="fertilizer_page()">Fertilizers</button>
+										<button type="submit"
+											style="color: black; border-color: white; background-color: white; padding: 17px 16px;"
+											class="btn btn-success" ng-click="pesticide_page()">Pesticides</button>
+										<button type="submit"
+											style="color: black; border-color: white; background-color: white; padding: 17px 16px;"
+											class="btn btn-success" ng-click="seed_page()">Seed</button>
+									</ul>
+								</div>
+								<button type="submit"
+									style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
+									class="btn btn-success" style="background-color: #FAD7A0;"
+									ng-click="profile_page(userid)">Profile</button>
+								<button type="submit"
+									style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
+									class="btn btn-success" style="background-color: #FAD7A0;"
+									ng-click="about_page()">About</button>
+								<button type="submit"
+									style="color: black; background-color: orange; border-color: orange; padding: 17px 16px;"
+									class="btn btn-success" ng-click="contact_page()">Contact</button>
 
-							<button type="submit"
-								style="color: black; background-color: orange; border-color: orange; padding: 17px 16px; float: right;"
-								class="btn btn-success" ng-click="backToHome()">Logout</button>
-						</nav>
+								<button type="submit"
+									style="color: black; background-color: orange; border-color: orange; padding: 17px 16px; float: right;"
+									class="btn btn-success" ng-click="backToHome()">Logout</button>
+							</nav>
+						</div>
 					</div>
-				</div>
-			</header>
+				</header>
+			</div>
 			<!-- ------------------------------------------------------------------------------------------------- -->
 			<!-- -----------------------------login success/ fail -------------------------------------------------------- -->
 
@@ -573,7 +591,10 @@ p.date {
 					</div>
 				</div>
 				<div ng-if="detail.status=='notok'">
-					Invalid Username or password! Try again !
+				 Invalid Username or password! Try again !
+					
+  					
+
 					<div id="myModal" class="modal fade" role="dialog">
 						<div class="modal-dialog">
 
@@ -609,8 +630,8 @@ p.date {
 								<h2>Contact Us</h2>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><button type="submit"
-								style="color: black; background-color: white; border-color: white;"
-								class="btn btn-warning" ng-click="home_page()">Home</button>
+											style="color: black; background-color: white; border-color: white;"
+											class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">Contact Us</li>
 								</ol>
@@ -722,7 +743,7 @@ p.date {
 									<div class="form-row">
 										<div class="form-group col-md-12 text-center">
 											<button type="submit" class="btn btn-success"
-												ng-click="backToHome()">
+												ng-click="home_page()">
 												<i class="fa fa-chevron-left"></i>Back To Home
 											</button>
 										</div>
@@ -768,8 +789,8 @@ p.date {
 								<h2>About Us</h2>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><button type="submit"
-								style="color: black; background-color: white; border-color: white;"
-								class="btn btn-warning" ng-click="home_page()">Home</button>
+											style="color: black; background-color: white; border-color: white;"
+											class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">About Us</li>
 								</ol>
@@ -832,7 +853,8 @@ p.date {
 									necessary information needed for farming.</font><br>
 							</div>
 						</div>
-					</div><br>
+					</div>
+					<br>
 				</section>
 			</div>
 
@@ -893,8 +915,8 @@ p.date {
 								<h2>Crop</h2>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><button type="submit"
-								style="color: black; background-color: white; border-color: white;"
-								class="btn btn-warning" ng-click="home_page()">Home</button>
+											style="color: black; background-color: white; border-color: white;"
+											class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">Crop</li>
 								</ol>
@@ -971,8 +993,8 @@ p.date {
 								<h2>Crop Description</h2>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><button type="submit"
-								style="color: black; background-color: white; border-color: white;"
-								class="btn btn-warning" ng-click="home_page()">Home</button>
+											style="color: black; background-color: white; border-color: white;"
+											class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">CropDesc</li>
 								</ol>
@@ -1062,7 +1084,7 @@ p.date {
 
 				<div class="col-sm-offset-3 col-md-6">
 					<button type="submit" class="btn btn-success"
-						ng-click="backToHome()"
+						ng-click="home_page()"home_page()"
 						style="position: absolute; left: 0; bottom: 0;">
 						<i class="fa fa-chevron-left"></i>Back To Home
 					</button>
@@ -1082,8 +1104,8 @@ p.date {
 								<h2>Seed</h2>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><button type="submit"
-								style="color: black; background-color: white; border-color: white;"
-								class="btn btn-warning" ng-click="home_page()">Home</button>
+											style="color: black; background-color: white; border-color: white;"
+											class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">Seed</li>
 								</ol>
@@ -1267,8 +1289,8 @@ p.date {
 								<h2>Fertilizers</h2>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><button type="submit"
-								style="color: black; background-color: white; border-color: white;"
-								class="btn btn-warning" ng-click="home_page()">Home</button>
+											style="color: black; background-color: white; border-color: white;"
+											class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">Fertilizer</li>
 								</ol>
@@ -1372,8 +1394,8 @@ p.date {
 								<h2>Pesticides</h2>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><button type="submit"
-								style="color: black; background-color: white; border-color: white;"
-								class="btn btn-warning" ng-click="home_page()">Home</button>
+											style="color: black; background-color: white; border-color: white;"
+											class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">Pesticide</li>
 								</ol>
@@ -1460,8 +1482,8 @@ p.date {
 								<h2>Profile</h2>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><button type="submit"
-								style="color: black; background-color: white; border-color: white;"
-								class="btn btn-warning" ng-click="home_page()">Home</button>
+											style="color: black; background-color: white; border-color: white;"
+											class="btn btn-warning" ng-click="home_page()">Home</button>
 									<li>
 									<li class="breadcrumb-item active">Profile</li>
 								</ol>
@@ -1472,149 +1494,152 @@ p.date {
 				<section class=" col-sm-offset-2 col-md-8 text-justify">
 					<div class="col-sm-offset-3 col-md-6"
 						ng-repeat="profile in profiles">
-						<div ng-repeat="profile in profiles"> 
-						<div class="row">
-							<div class="col-md-6">
-								<label>User Name</label>
+						<div ng-repeat="profile in profiles">
+							<div class="row">
+								<div class="col-md-6">
+									<label>User Name</label>
+								</div>
+								<div class="col-md-6">
+									<p>{{username}}</p>
+								</div>
 							</div>
-							<div class="col-md-6">
-								<p>{{username}}</p>
+							<div class="row">
+								<div class="col-md-6">
+									<label>First Name</label>
+								</div>
+								<div class="col-md-6">
+									<p>{{profile.firstname}}</p>
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>First Name</label>
-							</div>
-							<div class="col-md-6">
-								<p>{{profile.firstname}}</p>
-							</div>
-						</div>
 
-						<div class="row">
-							<div class="col-md-6">
-								<label>Last Name</label>
+							<div class="row">
+								<div class="col-md-6">
+									<label>Last Name</label>
+								</div>
+								<div class="col-md-6">
+									<p>{{profile.lastname}}</p>
+								</div>
 							</div>
-							<div class="col-md-6">
-								<p>{{profile.lastname}}</p>
+
+							<div class="row">
+								<div class="col-md-6">
+									<label>Email</label>
+								</div>
+								<div class="col-md-6">
+									<p>{{profile.email}}</p>
+								</div>
 							</div>
+
+							<div class="row">
+								<div class="col-md-6">
+									<label>Phone Number</label>
+								</div>
+								<div class="col-md-6">
+									<p>{{profile.mobile}}</p>
+								</div>
+							</div>
+
+
 						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<label>Email</label>
-							</div>
-							<div class="col-md-6">
-								<p>{{profile.email}}</p>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-md-6">
-								<label>Phone Number</label>
-							</div>
-							<div class="col-md-6">
-								<p>{{profile.mobile}}</p>
-							</div>
-						</div>
-
-
-					</div>
 				</section>
 			</div>
 
 			<!-- ----------------------------------------------Profile Page Close----------------------------------------- -->
 
 			<!-- ------------------------------------------------Footer------------------------------------------------------>
-
-			<footer class="full-footer col-md-12">
-				<div class="container top-footer">
-					<hr>
-					<div class="background-primary padding text-center">
-						<a style="color: black;" class="p-1"
-							href="https://www.facebook.com/farmer.buddy.16"> <i
-							class="fa fa-2x fa-facebook-square"></i></a> <a style="color: black;"
-							class="p-1"
-							href="https://www.gmail.com/farmers.buddyhelp@gmail.com"> <i
-							class="fa fa-2x fa-google-plus-square"></i></a> <a
-							style="color: black;" class="p-1"
-							href="https://twitter.com/FarmerBuddy2?s=08"> <i
-							class="fa fa-2x fa-twitter-square"></i></a> <a style="color: black;"
-							class="p-1"
-							href="https://www.instagram.com/invites/contact/?i=flct4vf2zh8v&utm_content=ibqo90i">
-							<i class="fa fa-2x fa-instagram"></i>
-						</a>
+			<div id="footer_div" ng-if="footer_status=='true'">
+				<footer class="full-footer col-md-12">
+					<div class="container top-footer">
 						<hr>
-					</div>
+						<div class="background-primary padding text-center">
+							<a style="color: black;" class="p-1"
+								href="https://www.facebook.com/farmer.buddy.16"> <i
+								class="fa fa-2x fa-facebook-square"></i></a> <a
+								style="color: black;" class="p-1"
+								href="https://www.gmail.com/farmers.buddyhelp@gmail.com"> <i
+								class="fa fa-2x fa-google-plus-square"></i></a> <a
+								style="color: black;" class="p-1"
+								href="https://twitter.com/FarmerBuddy2?s=08"> <i
+								class="fa fa-2x fa-twitter-square"></i></a> <a style="color: black;"
+								class="p-1"
+								href="https://www.instagram.com/invites/contact/?i=flct4vf2zh8v&utm_content=ibqo90i">
+								<i class="fa fa-2x fa-instagram"></i>
+							</a>
+							<hr>
+						</div>
 
-					<div class="col-md-4">
-						<img src="./IMG/farmer-buddy.jpg" width="50" height="50" /> <font
-							color="black" size="5">Farmer-Buddy</font>
-						<p>
-							Farmer-Buddy is a website which is <br> specially designed
-							to help our farmers<span id="dots">...</span><span id="more">
-								regarding the information they need such as<br> crops,
-								pesticides, fertilizers seeds, etc<br> Farmer must be
-								registered with our system<br> and should login to access
-								our services.
-							</span>
-						</p>
-						<button onclick="myFunction()" id="myBtn">Read more</button>
+						<div class="col-md-4">
+							<img src="./IMG/farmer-buddy.jpg" width="50" height="50" /> <font
+								color="black" size="5">Farmer-Buddy</font>
+							<p>
+								Farmer-Buddy is a website which is <br> specially designed
+								to help our farmers<span id="dots">...</span><span id="more">
+									regarding the information they need such as<br> crops,
+									pesticides, fertilizers seeds, etc<br> Farmer must be
+									registered with our system<br> and should login to access
+									our services.
+								</span>
+							</p>
+							<button onclick="myFunction()" id="myBtn">Read more</button>
 
-						<script>
-							function myFunction() {
-								var dots = document.getElementById("dots");
-								var moreText = document.getElementById("more");
-								var btnText = document.getElementById("myBtn");
+							<script>
+								function myFunction() {
+									var dots = document.getElementById("dots");
+									var moreText = document
+											.getElementById("more");
+									var btnText = document
+											.getElementById("myBtn");
 
-								if (dots.style.display === "inline") {
-									dots.style.display = "none";
-									btnText.innerHTML = "Read less";
-									moreText.style.display = "inline";
-								} else {
-									dots.style.display = "inline";
-									btnText.innerHTML = "Read more";
-									moreText.style.display = "none";
+									if (dots.style.display === "inline") {
+										dots.style.display = "none";
+										btnText.innerHTML = "Read less";
+										moreText.style.display = "inline";
+									} else {
+										dots.style.display = "inline";
+										btnText.innerHTML = "Read more";
+										moreText.style.display = "none";
+									}
 								}
-							}
-						</script>
-					</div>
+							</script>
+						</div>
 
-					<div class="col-md-4">
-						<font color="black" size="5">Related Links</font><br> <a
-							href="https://pmksy.gov.in/">Prime Minister Krishi Sinchayee
-							Yojana</a><br> <a href="https://pmfby.gov.in/">Pradhan
-							Mantri Fasal Bima Yojana</a><br> <a
-							href="https://www.enam.gov.in/web/">E-NAM (National
-							Agriculture Market)</a><br> <a href="https://nmsa.dac.gov.in/">National
-							Mission For Sustainable Agriculture </a>
-					</div>
-					<div class="col-md-4">
-						<font color="black" size="5">Contact us</font><br> <a
-							style="color: black;" class="p-1" href="#"> <i
-							class="fa fa-map-marker-alt">Address:Block No:2,Karvenagar,
-								Pune-52.</i></a><br> <a style="color: black;" class="p-1"
-							href="https://www.gmail.com/farmers.buddyhelp@gmail.com"> <i
-							class="fa fa-envelope">Email:farmers.buddyhelp@gmail.com</i></a><br>
+						<div class="col-md-4">
+							<font color="black" size="5">Related Links</font><br> <a
+								href="https://pmksy.gov.in/">Prime Minister Krishi Sinchayee
+								Yojana</a><br> <a href="https://pmfby.gov.in/">Pradhan
+								Mantri Fasal Bima Yojana</a><br> <a
+								href="https://www.enam.gov.in/web/">E-NAM (National
+								Agriculture Market)</a><br> <a href="https://nmsa.dac.gov.in/">National
+								Mission For Sustainable Agriculture </a>
+						</div>
+						<div class="col-md-4">
+							<font color="black" size="5">Contact us</font><br> <a
+								style="color: black;" class="p-1" href="#"> <i
+								class="fa fa-map-marker-alt">Address:Block No:2,Karvenagar,
+									Pune-52.</i></a><br> <a style="color: black;" class="p-1"
+								href="https://www.gmail.com/farmers.buddyhelp@gmail.com"> <i
+								class="fa fa-envelope">Email:farmers.buddyhelp@gmail.com</i></a><br>
 
-						<a style="color: black;" class="p-1" href="mailto:abc@gmail.com">
-							<i class="fa fa-phone">Phone:(+917798839371)</i>
-						</a><br> <a style="color: black;" class="p-1"
-							href="https://twitter.com/FarmerBuddy2?s=08"> <i
-							class="fa fa-twitter">Twitter</i></a><br> <a
-							style="color: black;" class="p-1"
-							href="https://www.facebook.com/farmer.buddy.16"><i
-							class="fa fa-facebook">Facebook</i></a>
-					</div>
-				</div>
-				<div class="container-fluid bottom-footer">
-					<div class="row">
-						<div class="col-12 text-center">
-							<p style="color: white;">Copyrights @ 2020 - All rights
-								reserved</p>
+							<a style="color: black;" class="p-1" href="mailto:abc@gmail.com">
+								<i class="fa fa-phone">Phone:(+917798839371)</i>
+							</a><br> <a style="color: black;" class="p-1"
+								href="https://twitter.com/FarmerBuddy2?s=08"> <i
+								class="fa fa-twitter">Twitter</i></a><br> <a
+								style="color: black;" class="p-1"
+								href="https://www.facebook.com/farmer.buddy.16"><i
+								class="fa fa-facebook">Facebook</i></a>
 						</div>
 					</div>
-				</div>
-			</footer>
+					<div class="container-fluid bottom-footer">
+						<div class="row">
+							<div class="col-12 text-center">
+								<p style="color: white;">Copyrights @ 2020 - All rights
+									reserved</p>
+							</div>
+						</div>
+					</div>
+				</footer>
+			</div>
 			<!-- -------------------------------------------------Footer close------------------------------------------ -->
 
 
@@ -1650,11 +1675,11 @@ p.date {
 		$scope.profile_status = "false";
 		$scope.home_status = "false";
 		$scope.userprofile_status = "false";
-		
-		$scope.userid="";
-		$scope.username="";
-		
-	
+		$scope.footer_status = "false";
+		$scope.header_status = "false";
+
+		$scope.userid = "";
+		$scope.username = "";
 
 		$scope.loginUser = function(uname, pwd) {
 			console.log("changename function called");
@@ -1757,6 +1782,8 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "false";
+			$scope.header_status = "false";
 		}
 		$scope.registration_page = function() {
 			$scope.welcome_status = "false";
@@ -1776,6 +1803,8 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "false";
+			$scope.header_status = "false";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1807,6 +1836,8 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "true";
+			$scope.header_status = "true";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1821,7 +1852,7 @@ p.date {
 			console.log($scope.contact_status);
 		}
 
-		$scope.welcome_page = function(userid,username) {
+		$scope.welcome_page = function(userid, username) {
 			$scope.welcome_status = "true";
 			$scope.login_status = "true";
 			$scope.registration_status = "false";
@@ -1839,9 +1870,11 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
-		//	alert("hi : "+userid);
-			$scope.userid=userid;
-			$scope.username=username;
+			$scope.footer_status = "true";
+			$scope.header_status = "true";
+			alert(" login Successfully. Welcome " + username);
+			$scope.userid = userid;
+			$scope.username = username;
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1874,6 +1907,9 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "false";
+			$scope.footer_status = "true";
+			$scope.header_status = "true";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1906,6 +1942,8 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "true";
+			$scope.header_status = "true";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1938,6 +1976,8 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "true";
+			$scope.header_status = "true";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -1970,6 +2010,8 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "true";
+			$scope.header_status = "true";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -2002,6 +2044,8 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "true";
+			$scope.header_status = "true";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -2034,6 +2078,8 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "true";
+			$scope.header_status = "true";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -2049,7 +2095,7 @@ p.date {
 		}
 
 		$scope.profile_page = function(userid) {
-//alert(userid);
+			//alert(userid);
 			$http.get($scope.context_path + "/user/profile?userid=" + userid)
 					.then(function(response) {
 						$scope.profiles = response.data;
@@ -2073,8 +2119,10 @@ p.date {
 			$scope.fertilizer_status = "false";
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "true";
-			$scope.home_status = "false";		
-			
+			$scope.home_status = "false";
+			$scope.footer_status = "true";
+			$scope.header_status = "true";
+
 		}
 
 		$scope.cropdesc_page = function(cropid) {
@@ -2109,6 +2157,8 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "true";
+			$scope.header_status = "true";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -2141,6 +2191,8 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "true";
+			$scope.header_status = "true";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -2173,6 +2225,8 @@ p.date {
 			$scope.pesticide_status = "true";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "true";
+			$scope.header_status = "true";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -2186,7 +2240,6 @@ p.date {
 			console.log($scope.registration_status);
 			console.log($scope.contact_status);
 		}
-
 
 		$scope.home_page = function() {
 			$scope.welcome_status = "true";
@@ -2206,6 +2259,8 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "true";
+			$scope.header_status = "true";
 			console.log($scope.cropdesc_status);
 			console.log($scope.purity_status);
 			console.log($scope.viability_status);
@@ -2218,6 +2273,50 @@ p.date {
 			console.log($scope.welcome_status);
 			console.log($scope.registration_status);
 			console.log($scope.contact_status);
+		}
+
+		$scope.footer_page = function() {
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "flase";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
+			$scope.footer_status = "true";
+			$scope.header_status = "false";
+		}
+
+		$scope.header_page = function() {
+			$scope.welcome_status = "false";
+			$scope.login_status = "true";
+			$scope.registration_status = "false";
+			$scope.contact_status = "false";
+			$scope.forget_pass_status = "false";
+			$scope.carousel_status = "true";
+			$scope.about_status = "false";
+			$scope.crop_status = "flase";
+			$scope.seed_status = "false";
+			$scope.purity_status = "false";
+			$scope.viability_status = "false";
+			$scope.moisture_status = "false";
+			$scope.cropdesc_status = "false";
+			$scope.fertilizer_status = "false";
+			$scope.pesticide_status = "false";
+			$scope.profile_status = "false";
+			$scope.home_status = "false";
+			$scope.footer_status = "false";
+			$scope.header_status = "true";
 		}
 
 		$scope.forget_password = function() {
@@ -2239,6 +2338,8 @@ p.date {
 			$scope.pesticide_status = "false";
 			$scope.profile_status = "false";
 			$scope.home_status = "false";
+			$scope.footer_status = "false";
+			$scope.header_status = "false";
 		}
 
 	});
