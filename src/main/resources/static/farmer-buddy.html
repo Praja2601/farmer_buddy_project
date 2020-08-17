@@ -505,7 +505,7 @@ p.date {
 									<div class="row">
 										<div class="col-12">
 											<h2 class="cropdetail">Agriculture</h2>
-											<br> <font size="4.5" color="black"> Agriculture
+											<br> <font size="3" color="black"> Agriculture
 												is the science and art of cultivating plants and livestock.
 												Agriculture was the key development in the rise of sedentary
 												human civilization, whereby farming of domesticated species
@@ -535,7 +535,7 @@ p.date {
 											</font>
 
 											<h2 class="cropdetail">Food Processing</h2>
-											<br> <font size="4.5" color="black">Food
+											<br> <font size="3" color="black">Food
 												processing industries in Maharashtra consists of very basic
 												processing. The main processing industries in the State are
 												in the sectors of sugar, milk, poultry, rice mill, flour
@@ -547,7 +547,7 @@ p.date {
 												State for primary and secondary process. </font>
 
 											<h2 class="cropdetail">Floriculture</h2>
-											<br> <font size="4.5" color="black">Maharashtra
+											<br> <font size="3" color="black">Maharashtra
 												is a major producer of floriculture products with more than
 												4000 hectares of area under various flowers. The major
 												traditional flowers grown in Maharashtra are rose,
@@ -568,18 +568,18 @@ p.date {
 									<div class="row">
 										<div class="col-md-4 margin-m-bottom">
 											<img class="margin-bottom" src="IMG/ricecrop.jpg"
-												alt="Rice Crop" height=250 width=280>
+												alt="Rice Crop" height=200 width=230>
 											<p style="text-align: center; font-size: 50;">Food Crop</p>
 										</div>
 										<div class="col-md-4 margin-m-bottom">
 											<img class="margin-bottom" src="IMG/vegecrop.jpg"
-												alt="Vege crop" height=250 width=280>
+												alt="Vege crop" height=200 width=230>
 											<p style="text-align: center; font-size: 50;">Vegetable
 												Crop</p>
 										</div>
 										<div class="col-md-4 margin-m-bottom">
 											<img class="margin-bottom" src="IMG/floriculture.jpg"
-												alt="Floriculture" height=250 width=280>
+												alt="Floriculture" height=200 width=230>
 											<p style="text-align: center; font-size: 50;">Floriculture
 												Crop</p>
 										</div>
@@ -590,33 +590,8 @@ p.date {
 						</div>
 					</div>
 				</div>
-				<div ng-if="detail.status=='notok'">
-					Invalid Username or password! Try again !
-
-
-
-					<div id="myModal" class="modal fade" role="dialog">
-						<div class="modal-dialog">
-
-							<!-- Modal content-->
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title">Modal Header</h4>
-								</div>
-								<div class="modal-body">
-									<p>
-										Invalid Username or password! <br>Please Try again !
-									</p>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">Close</button>
-								</div>
-							</div>
-
-						</div>
-					</div>
+				<div ng-if="detail.status=='notok'">	
+						<p> Invalid Username or password! Try again !</p>
 				</div>
 			</div>
 
@@ -644,7 +619,7 @@ p.date {
 					<div class="container">
 						<div class="row">
 							<div class="col-12">
-								<font size="4.5" color="black">We are always here to
+								<font size="3" color="black">We are always here to
 									help. If you have requirements/queries about our services; fill
 									up the contact from below and we'll do our best to reply within
 									24 hours. Alternatively simply pickup the phone and give us a
@@ -676,7 +651,7 @@ p.date {
 											<input type="number" class="form-control"
 												placeholder="Mobile Number" ng-model="mobile">
 										</div>
-										<div class="form-group col-md-6" ng-init="populateDistricts()">
+										<div class="form-group col-md-6">
 											<select class="form-control" name="" id=""
 												ng-model="district">
 												<option selected>District</option>
@@ -776,7 +751,7 @@ p.date {
 								<img class="margin-bottom" src="IMG/crop.jpg" alt="" height=300
 									width=500>
 								<h2 class="text-thin">Our Vision</h2>
-								<font size="4.5" color="black">To transform farmers by
+								<font size="3" color="black">To transform farmers by
 									creating an innovative as well as interactive platform for the
 									best farming results.</font>
 							</div>
@@ -784,7 +759,7 @@ p.date {
 								<img class="margin-bottom" src="IMG/crop2.jpg" alt="" height=300
 									width=500>
 								<h2 class="text-thin">Our Mission</h2>
-								<font size="4.5" color="black">To provide an online
+								<font size="3" color="black">To provide an online
 									platform for getting necessary help for farming</font>
 							</div>
 						</div>
@@ -797,7 +772,7 @@ p.date {
 							<div class="col-md-12 margin-m-bottom">
 								<h2 class="text-thin">Our Values</h2>
 
-								<font size="4.5" color="black">Respect and value for
+								<font size="3" color="black">Respect and value for
 									local knowledge and innovations<br> To provide agriculture
 									information to everyone which is easy to understand<br> <font>To
 										encourage the youths on rural development</font>
@@ -814,7 +789,7 @@ p.date {
 								<br>
 								<h2>--------------------------------------------------What
 									we are----------------------------------------------</h2>
-								<br> <font size="4.5" color="black">This platform is
+								<br> <font size="3" color="black">This platform is
 									specially developed to empower farmers the across maharashtra.
 									Here we help farmers all the way from seeding to shipping their
 									products in market. It includes seeds, fertilizers, pesticides.
@@ -932,7 +907,7 @@ p.date {
 										<img class="img" data-wow-duration="2.2s"
 											data-wow-delay="130ms" alt="{{crop.cropname}}"
 											src="{{context_path}}{{crop.cropimg}}" height=350 width=500><br>
-										<br> <font class="desc text-justify" size="4.5"
+										<br> <font class="desc text-justify" size="3"
 											color="black">{{crop.cropdesc}} .</font>
 										<button type="button" class="btn btn-success"
 											ng-click="cropdesc_page(crop.cropid)">
@@ -979,49 +954,49 @@ p.date {
 					</h2>
 					<h2 class="text-center">
 						<img class="text-center" alt="{{crop.cropname}}"
-							src="{{cropdesc.cropimg}}" height=350 width=500>
+							src="{{cropdesc.cropimg}}" height=300 width=400>
 					</h2>
 					<br>
 
 					<h3 class="cropdetail">
 						<b>Description</b>
 					</h3>
-					<font size="4.5" color="black">{{cropdesc.cropdesc}}</font>
+					<font size="3" color="black">{{cropdesc.cropdesc}}</font>
 
 					<h3 class="cropdetail">
 						<b>Climate</b>
 					</h3>
-					<font size="4.5" color="black">{{cropdesc.climate}}</font>
+					<font size="3" color="black">{{cropdesc.climate}}</font>
 
 					<h3 class="cropdetail">
 						<b>Time Period</b>
 					</h3>
-					<font size="4.5" color="black">{{cropdesc.timeperiod}}</font>
+					<font size="3" color="black">{{cropdesc.timeperiod}}</font>
 
 					<h3 class="cropdetail">
 						<b>Soil Requirement</b>
 					</h3>
-					<font size="4.5" color="black">{{cropdesc.soilrequirement}}</font>
+					<font size="3" color="black">{{cropdesc.soilrequirement}}</font>
 
 					<h3 class="cropdetail">
 						<b>Land Preparation</b>
 					</h3>
-					<font size="4.5" color="black">{{cropdesc.landpreparation}}</font>
+					<font size="3" color="black">{{cropdesc.landpreparation}}</font>
 
 					<h3 class="cropdetail">
 						<b>Sowing</b>
 					</h3>
-					<font size="4.5" color="black">{{cropdesc.sowing}}</font>
+					<font size="3" color="black">{{cropdesc.sowing}}</font>
 
 					<h3 class="cropdetail">
 						<b>Irrigation</b>
 					</h3>
-					<font size="4.5" color="black">{{cropdesc.irrigation}}<br></font>
+					<font size="3" color="black">{{cropdesc.irrigation}}<br></font>
 
 					<h3 class="cropdetail">
 						<b>Fertilizers</b>
 					</h3>
-					<font size="4.5" color="black">{{cropdesc.fertilizer}}<br></font>
+					<font size="3" color="black">{{cropdesc.fertilizer}}<br></font>
 
 					<h3 class="cropdetail">
 						<b>Pesticides</b>
@@ -1043,8 +1018,8 @@ p.date {
 						</thread>
 						<tbody>
 							<tr class="tr">
-								<td class="td"><font size="4.5" color="black">{{pesticide.disease}}</font></td>
-								<td class="td"><font size="4.5" color="black">{{pesticide.solution}}</font></td>
+								<td class="td"><font size="3" color="black">{{pesticide.disease}}</font></td>
+								<td class="td"><font size="3" color="black">{{pesticide.solution}}</font></td>
 
 							</tr>
 						</tbody>
@@ -1054,8 +1029,7 @@ p.date {
 
 				<div class="col-sm-offset-3 col-md-6">
 					<button type="submit" class="btn btn-success"
-						ng-click="home_page()"
-						home_page()"
+						ng-click="home_page()"home_page()"
 						style="position: absolute; left: 0; bottom: 0;">
 						<i class="fa fa-chevron-left"></i>Back To Home
 					</button>
@@ -1087,7 +1061,7 @@ p.date {
 				<section>
 					<div class="col-sm-offset-2 col-md-8">
 						<h2 class="cropdetail">Intriduction</h2>
-						<font size="4.5" color="black"> Seeds are the foundation of
+						<font size="3" color="black"> Seeds are the foundation of
 							agriculture. Technology has modernized much of farming's
 							day-to-day operations, but without a steady supply of
 							high-quality seed, yields and crop quality would be greatly
@@ -1100,7 +1074,7 @@ p.date {
 							seed producer.
 						</font>
 						<h2 class="cropdetail">How to ensure seed quality</h2>
-						<font size="4.5" color="black">Seed is the foundation of
+						<font size="3" color="black">Seed is the foundation of
 							any crop. It must be grown, harvested, and processed correctly
 							for best yield and quality results. Sowing good quality seeds
 							leads to lower seed rate, better emergence (>70%), more
@@ -1128,12 +1102,12 @@ p.date {
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-offset-2 col-md-8">
-								<font size="4.5" color="black">To determine the genetic
+								<font size="3" color="black">To determine the genetic
 									purity status of a given seed lot of the notified cultivar /
 									hybrid and the extent to which the sample in question conforms
 									to the prescribed standards.</font>
 								<h2>Seed lot purity</h2>
-								<font size="4.5" color="black"> Impurities refer to the
+								<font size="3" color="black"> Impurities refer to the
 									degree of contamination caused by (1) weed seeds, (2) seeds of
 									other crops or species, and (3) inert material such as stones,
 									dirt, or twigs. It is expressed as a percentage, by weight<br>
@@ -1149,7 +1123,7 @@ p.date {
 								</font>
 
 								<h2>Germination Percentage</h2>
-								<font size="4.5" color="black"> Germination percentage
+								<font size="3" color="black"> Germination percentage
 									expresses the proportion of the total number of seeds that are
 									alive. Good seeds have more than 80% germination rate.Many
 									varieties have a dormancy period immediately after harvest.
@@ -1174,7 +1148,7 @@ p.date {
 								</font>
 
 								<h2>Discoloration</h2>
-								<font size="4.5" color="black"> Fungi, bacteria, and
+								<font size="3" color="black"> Fungi, bacteria, and
 									environmental conditions such as high humidity and temperature
 									(i.e. 27−35°) cause discoloration. Other rice diseases do not
 									produce consistent discoloration. Any seed having more than
@@ -1202,7 +1176,7 @@ p.date {
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-offset-2 col-md-8">
-								<font size="4.5" color="black"> The viability of seed in
+								<font size="3" color="black"> The viability of seed in
 									the field is determined by its germination potential, vigor,
 									and moisture level. The rate of germination is an indicator of
 									vigor.Rapid seed germination increases the chance that seed
@@ -1231,7 +1205,7 @@ p.date {
 					<div class="container">
 						<div class="row">
 							<div class="col-sm-offset-2 col-md-8">
-								<font size="4.5" color="black"> Moisture content is the
+								<font size="3" color="black"> Moisture content is the
 									amount of water in the grain.<br> It influences the life
 									and vigor of the seed. The amount of moisture should be less
 									than 14%, and preferably less than 12% for extended storage
@@ -1273,7 +1247,7 @@ p.date {
 					<h3 class="cropdetail">
 						<b>What is meant by fertilizer?</b>
 					</h3>
-					<font size="4.5" color="black">Fertilizers are chemical
+					<font size="3" color="black">Fertilizers are chemical
 						substances supplied to the crops to increase their productivity.
 						These are used by the farmers daily to increase the crop yield.
 						The fertilizers contain the essential nutrients required by the
@@ -1285,7 +1259,7 @@ p.date {
 					<h3 class="cropdetail">
 						<b>Importance of fertilizer</b>
 					</h3>
-					<font size="4.5" color="black"> It is very difficult to meet
+					<font size="3" color="black"> It is very difficult to meet
 						the demands of the increasing population with such fewer
 						resources. Loss of soil fertility, pests, and lack of nutrients
 						has resulted in a decrease in agricultural production. This has
@@ -1312,7 +1286,7 @@ p.date {
 					<h3 class="cropdetail">
 						<b>Types of fertilizer</b>
 					</h3>
-					<font size="4.5" color="black">
+					<font size="3" color="black">
 						<ul>
 							<li><h4>
 									<b>Inorganic Fertilizers</b>
@@ -1351,6 +1325,30 @@ p.date {
 						</ul>
 					</font>
 				</section>
+				<section>
+				<div class=" col-sm-offset-4 col-md-4 text-justify" ng-init="populateCrops()">
+				<select class="form-control" name="" id="" ng-change="fertilizergo(cropid)"
+												ng-model="cropid">
+												<option selected>Crop</option>
+												<option ng-repeat="crop in crops" value = "{{crop.cropid}}">
+													{{crop.cropname}}</option>
+											</select>
+											
+				</div>
+				<div class="col-sm-offset-2 col-md-8"
+					ng-repeat="fertilizer in fertilizers">
+					
+					<h3 class="cropdetail">
+						<center><b>{{fertilizer.cropname}}</b></center>
+					</h3>
+					
+					
+					<h3 class="cropdetail">
+						<b>Fertilizers</b>
+					</h3>
+					<font size="3" color="black">{{fertilizer.fertilizer}}<br></font>
+					</div>
+				</section>
 			</div>
 
 			<!-- ----------------------------------------------Fertilizer Page Close-------------------------------------- -->
@@ -1378,7 +1376,7 @@ p.date {
 					<h3 class="cropdetail">
 						<b>What is meant by pesticides?</b>
 					</h3>
-					<font size="4.5" color="black"> Pesticides are chemical
+					<font size="3" color="black"> Pesticides are chemical
 						substances that are meant to kill pests. In general, a pesticide
 						is a chemical or a biological agent such as a virus, bacterium,
 						antimicrobial, or disinfectant that deters, incapacitates, kills,
@@ -1396,7 +1394,7 @@ p.date {
 					<h3 class="cropdetail">
 						<b>Importance of Pesticides</b>
 					</h3>
-					<font size="4.5" color="black">Pesticides are important.
+					<font size="3" color="black">Pesticides are important.
 						They help farmers grow more food on less land by protecting crops
 						from pests, diseases and weeds as well as raising productivity per
 						hectare. Production of major crops has more than tripled since
@@ -1418,7 +1416,7 @@ p.date {
 					<h3 class="cropdetail">
 						<b>Types of Pesticides</b>
 					</h3>
-					<font size="4.5" color="black">
+					<font size="3" color="black">
 						<ul>
 							<li>Algaecides to kill and/or slowing the growth of algae.</li>
 							<li>Antimicrobials to control germs and microbes such as
@@ -1437,9 +1435,44 @@ p.date {
 							<li>Wood Preservatives to make wood resistant to insects,
 								fungus and other pests.</li>
 						</ul>
-					</font> <img alt="" src="/IMG/pesticidetype.png" height=450 width=500
+					</font> <img alt="" src="/IMG/pesticidetype.png" height=400 width=450
 						class="image"><b><hr></b>
 				</section>
+				<section>
+				<div class=" col-sm-offset-4 col-md-4 text-justify" ng-init="populateCrops()">
+				<select class="form-control" name="" id="" ng-change="pesticidego(cropid)"
+												ng-model="cropid">
+												<option selected>Crop</option>
+												<option ng-repeat="crop in crops" value="{{crop.cropid}}">
+													{{crop.cropname}}</option>
+											</select><br>
+											
+				</div>
+				<div class="col-sm-offset-2 col-md-8"
+					ng-repeat="pesticide in pesticides">
+
+					<table class="table">
+						<thread>
+						<tr class="tr">
+							<th class="th">
+								<h3 class="cropdetail">Disease</h3>
+							</th>
+							<th class="th"><h3 class="cropdetail">Solution</h3></th>
+
+						</tr>
+						</thread>
+						<tbody>
+							<tr class="tr">
+								<td class="td"><font size="3" color="black">{{pesticide.disease}}</font></td>
+								<td class="td"><font size="3" color="black">{{pesticide.solution}}</font></td>
+
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+				</section>
+				
 			</div>
 
 			<!-- ----------------------------------------------Pesticide Page Close-------------------------------------- -->
@@ -1648,9 +1681,11 @@ p.date {
 		$scope.userprofile_status = "false";
 		$scope.footer_status = "false";
 		$scope.header_status = "false";
+		
 
 		$scope.userid = "";
 		$scope.username = "";
+		
 
 		$scope.loginUser = function(uname, pwd) {
 			console.log("changename function called");
@@ -1712,6 +1747,35 @@ p.date {
 						return angular.fromJson($scope.districts);
 					});
 		}
+		
+		$scope.populateCrops = function() {
+			$http.get($scope.context_path + "/crop/getAllCrops").then(
+					function(response) {
+						$scope.crops = response.data;
+						console.log($scope.crops);
+						return angular.fromJson($scope.crops);
+					});
+		}
+		
+		$scope.fertilizergo = function(cropid){
+			$http.get(
+					$scope.context_path + "/crop/fertilizer?cropid="
+							+ cropid).then(function(response) {
+				$scope.fertilizers = response.data;
+				console.log($scope.fertilizers);
+				return angular.fromJson($scope.fertilizers);
+			});
+		}
+		
+		$scope.pesticidego = function(cropid){
+			alert(cropid);
+			$http.get($scope.context_path + "/crop/pesticide?cropid=" + cropid)
+			.then(function(response) {
+				$scope.pesticides = response.data;
+				console.log($scope.pesticides);
+				return angular.fromJson($scope.pesticides);
+			});
+		}
 
 		$scope.populateCropTypes = function(croptypeids) {
 			$http.get(
@@ -1755,6 +1819,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "false";
 			$scope.header_status = "false";
+			
 		}
 		$scope.registration_page = function() {
 			$scope.welcome_status = "false";
@@ -1776,18 +1841,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "false";
 			$scope.header_status = "false";
-			console.log($scope.cropdesc_status);
-			console.log($scope.purity_status);
-			console.log($scope.viability_status);
-			console.log($scope.moisture_status);
-			console.log($scope.seed_status);
-			console.log($scope.forget_pass_status);
-			console.log($scope.crop_status);
-			console.log($scope.about_status);
-			console.log($scope.login_status);
-			console.log($scope.welcome_status);
-			console.log($scope.registration_status);
-			console.log($scope.contact_status);
+			
 		}
 		$scope.contact_page = function() {
 			$scope.welcome_status = "false";
@@ -1809,18 +1863,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "true";
-			console.log($scope.cropdesc_status);
-			console.log($scope.purity_status);
-			console.log($scope.viability_status);
-			console.log($scope.moisture_status);
-			console.log($scope.seed_status);
-			console.log($scope.forget_pass_status);
-			console.log($scope.crop_status);
-			console.log($scope.about_status);
-			console.log($scope.login_status);
-			console.log($scope.welcome_status);
-			console.log($scope.registration_status);
-			console.log($scope.contact_status);
+			
 		}
 
 		$scope.welcome_page = function(userid, username) {
@@ -1843,21 +1886,10 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "true";
-			alert(" login Successfully. Welcome " + username);
+			
+			alert(" login Successful. Welcome " + username);
 			$scope.userid = userid;
 			$scope.username = username;
-			console.log($scope.cropdesc_status);
-			console.log($scope.purity_status);
-			console.log($scope.viability_status);
-			console.log($scope.moisture_status);
-			console.log($scope.seed_status);
-			console.log($scope.forget_pass_status);
-			console.log($scope.crop_status);
-			console.log($scope.about_status);
-			console.log($scope.login_status);
-			console.log($scope.welcome_status);
-			console.log($scope.registration_status);
-			console.log($scope.contact_status);
 		}
 
 		$scope.about_page = function() {
@@ -1881,18 +1913,7 @@ p.date {
 			$scope.footer_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "true";
-			console.log($scope.cropdesc_status);
-			console.log($scope.purity_status);
-			console.log($scope.viability_status);
-			console.log($scope.moisture_status);
-			console.log($scope.seed_status);
-			console.log($scope.forget_pass_status);
-			console.log($scope.crop_status);
-			console.log($scope.about_status);
-			console.log($scope.login_status);
-			console.log($scope.welcome_status);
-			console.log($scope.registration_status);
-			console.log($scope.contact_status);
+			
 		}
 
 		$scope.crop_page = function() {
@@ -1915,18 +1936,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "true";
-			console.log($scope.cropdesc_status);
-			console.log($scope.purity_status);
-			console.log($scope.viability_status);
-			console.log($scope.moisture_status);
-			console.log($scope.seed_status);
-			console.log($scope.forget_pass_status);
-			console.log($scope.crop_status);
-			console.log($scope.about_status);
-			console.log($scope.login_status);
-			console.log($scope.welcome_status);
-			console.log($scope.registration_status);
-			console.log($scope.contact_status);
+			
 		}
 
 		$scope.seed_page = function() {
@@ -1949,18 +1959,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "true";
-			console.log($scope.cropdesc_status);
-			console.log($scope.purity_status);
-			console.log($scope.viability_status);
-			console.log($scope.moisture_status);
-			console.log($scope.seed_status);
-			console.log($scope.forget_pass_status);
-			console.log($scope.crop_status);
-			console.log($scope.about_status);
-			console.log($scope.login_status);
-			console.log($scope.welcome_status);
-			console.log($scope.registration_status);
-			console.log($scope.contact_status);
+		
 		}
 
 		$scope.purity_page = function() {
@@ -1983,18 +1982,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "true";
-			console.log($scope.cropdesc_status);
-			console.log($scope.purity_status);
-			console.log($scope.viability_status);
-			console.log($scope.moisture_status);
-			console.log($scope.seed_status);
-			console.log($scope.forget_pass_status);
-			console.log($scope.crop_status);
-			console.log($scope.about_status);
-			console.log($scope.login_status);
-			console.log($scope.welcome_status);
-			console.log($scope.registration_status);
-			console.log($scope.contact_status);
+			
 		}
 
 		$scope.viability_page = function() {
@@ -2017,18 +2005,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "true";
-			console.log($scope.cropdesc_status);
-			console.log($scope.purity_status);
-			console.log($scope.viability_status);
-			console.log($scope.moisture_status);
-			console.log($scope.seed_status);
-			console.log($scope.forget_pass_status);
-			console.log($scope.crop_status);
-			console.log($scope.about_status);
-			console.log($scope.login_status);
-			console.log($scope.welcome_status);
-			console.log($scope.registration_status);
-			console.log($scope.contact_status);
+			
 		}
 
 		$scope.moisture_page = function() {
@@ -2051,18 +2028,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "true";
-			console.log($scope.cropdesc_status);
-			console.log($scope.purity_status);
-			console.log($scope.viability_status);
-			console.log($scope.moisture_status);
-			console.log($scope.seed_status);
-			console.log($scope.forget_pass_status);
-			console.log($scope.crop_status);
-			console.log($scope.about_status);
-			console.log($scope.login_status);
-			console.log($scope.welcome_status);
-			console.log($scope.registration_status);
-			console.log($scope.contact_status);
+			
 		}
 
 		$scope.profile_page = function(userid) {
@@ -2093,6 +2059,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "true";
+		
 
 		}
 
@@ -2130,18 +2097,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "true";
-			console.log($scope.cropdesc_status);
-			console.log($scope.purity_status);
-			console.log($scope.viability_status);
-			console.log($scope.moisture_status);
-			console.log($scope.seed_status);
-			console.log($scope.forget_pass_status);
-			console.log($scope.crop_status);
-			console.log($scope.about_status);
-			console.log($scope.login_status);
-			console.log($scope.welcome_status);
-			console.log($scope.registration_status);
-			console.log($scope.contact_status);
+			
 		}
 
 		$scope.fertilizer_page = function() {
@@ -2164,18 +2120,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "true";
-			console.log($scope.cropdesc_status);
-			console.log($scope.purity_status);
-			console.log($scope.viability_status);
-			console.log($scope.moisture_status);
-			console.log($scope.seed_status);
-			console.log($scope.forget_pass_status);
-			console.log($scope.crop_status);
-			console.log($scope.about_status);
-			console.log($scope.login_status);
-			console.log($scope.welcome_status);
-			console.log($scope.registration_status);
-			console.log($scope.contact_status);
+		
 		}
 
 		$scope.pesticide_page = function() {
@@ -2198,18 +2143,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "true";
-			console.log($scope.cropdesc_status);
-			console.log($scope.purity_status);
-			console.log($scope.viability_status);
-			console.log($scope.moisture_status);
-			console.log($scope.seed_status);
-			console.log($scope.forget_pass_status);
-			console.log($scope.crop_status);
-			console.log($scope.about_status);
-			console.log($scope.login_status);
-			console.log($scope.welcome_status);
-			console.log($scope.registration_status);
-			console.log($scope.contact_status);
+		
 		}
 
 		$scope.home_page = function() {
@@ -2232,18 +2166,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "true";
-			console.log($scope.cropdesc_status);
-			console.log($scope.purity_status);
-			console.log($scope.viability_status);
-			console.log($scope.moisture_status);
-			console.log($scope.seed_status);
-			console.log($scope.forget_pass_status);
-			console.log($scope.crop_status);
-			console.log($scope.about_status);
-			console.log($scope.login_status);
-			console.log($scope.welcome_status);
-			console.log($scope.registration_status);
-			console.log($scope.contact_status);
+			
 		}
 
 		$scope.footer_page = function() {
@@ -2266,6 +2189,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "true";
 			$scope.header_status = "false";
+		
 		}
 
 		$scope.header_page = function() {
@@ -2288,6 +2212,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "false";
 			$scope.header_status = "true";
+			
 		}
 
 		$scope.forget_password = function() {
@@ -2311,6 +2236,7 @@ p.date {
 			$scope.home_status = "false";
 			$scope.footer_status = "false";
 			$scope.header_status = "false";
+			
 		}
 
 	});
