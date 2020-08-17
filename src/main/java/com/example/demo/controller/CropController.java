@@ -2,14 +2,17 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.StringTokenizer;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.example.demo.model.Crop;
 import com.example.demo.model.CropType;
 import com.example.demo.model.District;
@@ -17,11 +20,19 @@ import com.example.demo.model.Pesticide;
 import com.example.demo.repo.CropRepository;
 import com.example.demo.repo.CropTypeRepository;
 import com.example.demo.repo.DistrictRepository;
+import com.example.demo.repo.FertilizerRepository;
 import com.example.demo.repo.PesticideRepository;
 
 @RestController
 @RequestMapping("/crop")
 public class CropController {
+	
+	private static final String STATUS = "status";
+	private static final String NOTOK = "notok";
+	private static final String CROPID = "cropid";
+	private static final String CROPIMG = "cropimg";
+	private static final String CROPNAME = "cropname";
+	private static final String FERTILIZER = "fertilizer";
 	
 	@Autowired
 	DistrictRepository districtRepository;
@@ -35,8 +46,10 @@ public class CropController {
 	@Autowired
 	PesticideRepository pesticideRepository;
 	
+	@Autowired
+	FertilizerRepository fertilizerRepository;
 	
-	@RequestMapping(value="/getAllDistricts", method=RequestMethod.GET,produces = "text/html")
+	@GetMapping(value="/getAllDistricts")//, method=RequestMethod.GET,produces = "text/html")
 	public String getAllDistricts()
 	{
 		List <District> districts =districtRepository.findAll();
@@ -44,12 +57,12 @@ public class CropController {
 		JSONObject districtObject = null;
 		if(districts != null)
 		{
-			if(districts.size()>0)
+			if(!districts.isEmpty())
 			{
 				for(District district : districts)
 				{
 					districtObject = new JSONObject();
-					districtObject.put("status","ok");
+					districtObject.put(STATUS,"ok");
 					districtObject.put("id", district.getDistrictId());
 					districtObject.put("districtname", district.getDistrictName());
 					districtObject.put("croptypeids", district.getCropTypeIds());
@@ -59,22 +72,59 @@ public class CropController {
 			else
 			{
 				districtObject = new JSONObject();
-				districtObject.put("status", "no records for districts");
+				districtObject.put(STATUS, "no records for districts");
 				districtArray.put(districtObject);
 			}
 		}
 		else
 		{
 			districtObject = new JSONObject();
-			districtObject.put("status", "no records for districts");
+			districtObject.put(STATUS, "no records for districts");
 			districtArray.put(districtObject);
 		}
 		return districtArray.toString();
 	
 	}
 	
+	@GetMapping(value="/getAllCrops")//, method=RequestMethod.GET,produces = "text/html")
+	public String getAllCrops()
+	{
+		List <Crop> crops =cropRepository.findAll();
+		JSONArray cropArray = new JSONArray();
+		JSONObject cropObject = null;
+		if(crops != null)
+		{
+			if(!crops.isEmpty())
+			{
+				for(Crop crop : crops)
+				{
+					cropObject = new JSONObject();
+					cropObject.put(STATUS,"ok");
+					cropObject.put("cropid", crop.getCropId());
+					cropObject.put(CROPNAME, crop.getCropName());
+					
+					cropArray.put(cropObject);   //[{"id":1, "croptypeid":"1,2,3,4","districtnmae":"Ahmednagar"}]
+				}
+			}
+			else
+			{
+				cropObject = new JSONObject();
+				cropObject.put(STATUS, "no records for crops");
+				cropArray.put(cropObject);
+			}
+		}
+		else
+		{
+			cropObject = new JSONObject();
+			cropObject.put(STATUS, "no records for crops");
+			cropArray.put(cropObject);
+		}
+		return cropArray.toString();
 	
-	@RequestMapping(value="/croptypes", method=RequestMethod.GET,produces = "text/html")
+	}
+	
+	
+	@GetMapping(value="/croptypes")//, method=RequestMethod.GET,produces = "text/html")
 	public String test(@RequestParam (name="croptypeids") String cropTypeIds)
 	{
 		JSONArray cropTypeArray = new JSONArray();
@@ -87,12 +137,12 @@ public class CropController {
 		List<CropType> croptypes = cropTypeRepository.findByCropTypeIdsIn(ids);
 		if(croptypes != null)
 		{
-			if(croptypes.size()>0)
+			if(!croptypes.isEmpty())
 			{
 				for(CropType cp : croptypes) {
 					System.out.println(cp.getCropTypeName()+" "+cp.getCropTypeId());
 					cropTypeObject = new JSONObject();
-					cropTypeObject.put("status", "ok");
+					cropTypeObject.put(STATUS, "ok");
 					cropTypeObject.put("croptypeid", cp.getCropTypeId());
 					cropTypeObject.put("croptypename", cp.getCropTypeName());
 					cropTypeArray.put(cropTypeObject);
@@ -101,44 +151,39 @@ public class CropController {
 			else
 			{
 				cropTypeObject = new JSONObject();
-				cropTypeObject.put("status", "no records for croptypes");
+				cropTypeObject.put(STATUS, "no records for croptypes");
 				cropTypeArray.put(cropTypeObject);
 			}
 		}
 		else
 		{
 			cropTypeObject = new JSONObject();
-			cropTypeObject.put("status", "no records for croptypes");
+			cropTypeObject.put(STATUS, "no records for croptypes");
 			cropTypeArray.put(cropTypeObject);
 		}
 		return cropTypeArray.toString();
-		//return districtId+" "+dt.getDistrictName()+" "+dt.getCropTypeIds();
 	}
 	
 	
-	@RequestMapping(value="/crops", method=RequestMethod.GET,produces = "text/html")
+	@GetMapping(value="/crops")//, method=RequestMethod.GET,produces = "text/html")
 	public String getCropsDetails(@RequestParam (name="croptypeid") String cropTypeId)
 	{
 		JSONArray cropArray = new JSONArray();
 		JSONObject cropObject = null;
 		
-		//List<String> ids = new ArrayList<>();
-		//StringTokenizer st = new StringTokenizer(cropTypeId,",");
-		//while(st.hasMoreElements())
-			//ids.add(st.nextToken());
 		List<Crop> crops = cropRepository.findByCropTypeIdsIn(cropTypeId);
 		
 		if(crops != null)
 		{
-			if(crops.size()>0)
+			if(!crops.isEmpty())
 			{
 				for(Crop cp : crops) {
 					System.out.println(cp.getCropName()+" "+cp.getCropTypeId() + "  "+cp.getCropId()+" "+cp.getFertilizer());
 					cropObject = new JSONObject();
-					cropObject.put("status", "ok");
+					cropObject.put(STATUS, "ok");
 					cropObject.put("croptypeid", cp.getCropTypeId());
-					cropObject.put("cropname", cp.getCropName());
-					cropObject.put("cropid", cp.getCropId());
+					cropObject.put(CROPNAME, cp.getCropName());
+					cropObject.put(CROPID, cp.getCropId());
 					cropObject.put("cropdesc", cp.getCropDesc());
 					cropObject.put("climate", cp.getCliMate());
 					cropObject.put("timeperiod", cp.getTimePeriod());
@@ -146,40 +191,43 @@ public class CropController {
 					cropObject.put("landpreparation", cp.getLandPreparation());
 					cropObject.put("sowing", cp.getSowIng());
 					cropObject.put("irrigation", cp.getIrrigation());
-					cropObject.put("cropimg", cp.getCropImg());
-					cropObject.put("fertilizer", cp.getFertilizer());
+					cropObject.put(CROPIMG, cp.getCropImg());
+					cropObject.put(FERTILIZER, cp.getFertilizer());
 					cropArray.put(cropObject);
 				}
 			}
 			else
 			{
 				cropObject = new JSONObject();
-				cropObject.put("status", "notok");
+				cropObject.put(STATUS, NOTOK);
 				cropArray.put(cropObject);
 			}
 		}
 		else
 		{
 			cropObject = new JSONObject();
-			cropObject.put("status", "notok");
+			cropObject.put(STATUS, NOTOK);
 			cropArray.put(cropObject);
 		}
 		return cropArray.toString();
 	}
 	
-	@RequestMapping(value="/crop", method=RequestMethod.GET,produces = "text/html")
-	public String getCropDetail(@RequestParam (name="cropid") int cropId)
+	@GetMapping(value="/crop")//, method=RequestMethod.GET,produces = "text/html")
+	public String getCropDetail(@RequestParam (name=CROPID) int cropId)
 	{
 		JSONArray cropdescArray = new JSONArray();
 		JSONObject cropdescObject = null;
 		
-		Crop crop = cropRepository.findById(cropId).get();
+		Crop crop = null;
+		Optional<Crop> cp = cropRepository.findById(cropId);
+		if(cp.isPresent())
+			crop = cp.get();
 		
 		if(crop != null)
 		{
 			cropdescObject = new JSONObject();
-			cropdescObject.put("status", "ok");
-			cropdescObject.put("cropid",crop.getCropId());
+			cropdescObject.put(STATUS, "ok");
+			cropdescObject.put(CROPID,crop.getCropId());
 			cropdescObject.put("cropdesc",crop.getCropDesc());
 			cropdescObject.put("climate", crop.getCliMate());
 			cropdescObject.put("soilrequirement", crop.getSoilRequirement());
@@ -187,14 +235,14 @@ public class CropController {
 			cropdescObject.put("landpreparation", crop.getLandPreparation());
 			cropdescObject.put("sowing", crop.getSowIng());
 			cropdescObject.put("irrigation", crop.getIrrigation());
-			cropdescObject.put("cropimg", crop.getCropImg());
-			cropdescObject.put("fertilizer", crop.getFertilizer());
+			cropdescObject.put(CROPIMG, crop.getCropImg());
+			cropdescObject.put(FERTILIZER, crop.getFertilizer());
 			cropdescArray.put(cropdescObject);
 		}
 		else
 		{
 			cropdescObject = new JSONObject();
-			cropdescObject.put("status", "notok");
+			cropdescObject.put(STATUS, NOTOK);
 			cropdescArray.put(cropdescObject);
 		}
 		return cropdescArray.toString();
@@ -202,8 +250,8 @@ public class CropController {
 	}
 	
 	
-	@RequestMapping(value="/pesticide", method=RequestMethod.GET,produces = "text/html")
-	public String getPesticide(@RequestParam (name="cropid") String cropId)
+	@GetMapping(value="/pesticide")//, method=RequestMethod.GET,produces = "text/html")
+	public String getPesticide(@RequestParam (name=CROPID) String cropId)
 	{
 		JSONArray pesticideArray = new JSONArray();
 		JSONObject pesticideObject = null;
@@ -212,13 +260,13 @@ public class CropController {
 		
 		if(pesticide != null)
 		{
-			if(pesticide.size()>0)
+			if(!pesticide.isEmpty())
 			{
 				for(Pesticide pest : pesticide) {
 					System.out.println(pest.getPesticideId()+" "+pest.getDisease()+" "+pest.getSolution()+" "+pest.getCropId());
 					pesticideObject = new JSONObject();
-					pesticideObject.put("status", "ok");
-					pesticideObject.put("cropid", pest.getCropId());
+					pesticideObject.put(STATUS, "ok");
+					pesticideObject.put(CROPID, pest.getCropId());
 					pesticideObject.put("pesticideid", pest.getPesticideId());
 					pesticideObject.put("disease", pest.getDisease());
 					pesticideObject.put("solution", pest.getSolution());
@@ -228,17 +276,56 @@ public class CropController {
 			else
 			{
 				pesticideObject = new JSONObject();
-				pesticideObject.put("status", "notok");
+				pesticideObject.put(STATUS, NOTOK);
 				pesticideArray.put(pesticideObject);
 			}
 		}
 		else
 		{
 			pesticideObject = new JSONObject();
-			pesticideObject.put("status", "notok");
+			pesticideObject.put(STATUS, NOTOK);
 			pesticideArray.put(pesticideObject);
 		}
 		
 		return pesticideArray.toString();
+	}
+	
+	@GetMapping(value="/fertilizer")//, method=RequestMethod.GET,produces = "text/html")
+	public String getFertilizer(@RequestParam (name=CROPID) int cropId)
+	{
+		JSONArray fertilizerArray = new JSONArray();
+		JSONObject fertilizerObject = null;
+		
+		List<Crop> fertilizers = fertilizerRepository.findByCropIdsIn(cropId);
+		
+		if(fertilizers != null)
+		{
+			if(!fertilizers.isEmpty())
+			{
+				for(Crop fert : fertilizers) {
+					System.out.println(fert.getCropName()+" "+fert.getCropTypeId() + "  "+fert.getCropId()+" "+fert.getFertilizer());
+					fertilizerObject = new JSONObject();
+					fertilizerObject.put(STATUS, "ok");
+					fertilizerObject.put(CROPNAME, fert.getCropName());
+					fertilizerObject.put(CROPID, fert.getCropId());
+					fertilizerObject.put(CROPIMG, fert.getCropImg());
+					fertilizerObject.put(FERTILIZER, fert.getFertilizer());
+					fertilizerArray.put(fertilizerObject);
+				}
+			}
+			else
+			{
+				fertilizerObject = new JSONObject();
+				fertilizerObject.put(STATUS, NOTOK);
+				fertilizerArray.put(fertilizerObject);
+			}
+		}
+		else
+		{
+			fertilizerObject = new JSONObject();
+			fertilizerObject.put(STATUS, NOTOK);
+			fertilizerArray.put(fertilizerObject);
+		}
+		return fertilizerArray.toString();
 	}
 }
